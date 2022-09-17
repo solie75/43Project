@@ -38,20 +38,27 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 
     MSG msg;
 
-    // 기본 메시지 루프입니다:
-    while (GetMessage(&msg, nullptr, 0, 0))
-    {
-        if (!TranslateAccelerator(msg.hwnd, hAccelTable, &msg))
-        {
-            TranslateMessage(&msg);
-            DispatchMessage(&msg);
-        }
-    }
-
     // PeekMessage 루프
     while (true)
     {
-        if(PeekMessageW(&msg, nullptr))
+        if (PeekMessageW(&msg, nullptr, 0, 0, PM_REMOVE))
+        {
+            if (WM_QUIT == msg.message)
+            {
+                break;
+            }
+            // 단축키 조합 확인
+            if (!TranslateAccelerator(msg.hwnd, hAccelTable, &msg))
+            {
+                TranslateMessage(&msg);
+                DispatchMessage(&msg);
+            }
+        }
+        else // 메시지 큐에 메시지가 없는 경우
+        {
+            // Game Run
+
+        }
     }
 
     return (int) msg.wParam;
