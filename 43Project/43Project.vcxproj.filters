@@ -13,6 +13,48 @@
       <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
       <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
     </Filter>
+    <Filter Include="Game\01.Engine">
+      <UniqueIdentifier>{bebf631d-ba83-4d54-8c3f-0cc2528b58ba}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\02.Manager">
+      <UniqueIdentifier>{1f205f1a-05fd-41e8-b426-7d71e7c09ab3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\02.Manager\02.TimeMgr">
+      <UniqueIdentifier>{2c486de9-cd4b-4a3a-a74b-229ae7f5957f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\02.Manager\01.KeyMgr">
+      <UniqueIdentifier>{29e469fa-9d12-4104-ad4f-7012b501eecb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\02.Manager\03.LevelMgr">
+      <UniqueIdentifier>{00cd0e20-5326-4dbe-a323-5e9fa3bd87a0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\04.Object">
+      <UniqueIdentifier>{8e59a7a0-1e55-4b8e-bd38-b412dbbdf644}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\04.Object\Player">
+      <UniqueIdentifier>{2839248a-01c8-4be4-b2d9-ea0118e1c98f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\04.Object\Missile">
+      <UniqueIdentifier>{304da2e7-af16-4fb2-bb62-6dc39ab1deb1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\05.Component">
+      <UniqueIdentifier>{43bba7e6-1308-4609-8ba2-291fb7e84488}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\03.Level">
+      <UniqueIdentifier>{96f58629-207b-4fab-bacd-5b52e02b4933}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\03.Level\01.Start">
+      <UniqueIdentifier>{de74f669-150c-497e-a7bf-5c2ee17c2d51}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\03.Level\02.State_01">
+      <UniqueIdentifier>{53f20b5e-7459-4857-9b03-16064a1799cd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\05.Component\Animator">
+      <UniqueIdentifier>{9464385a-ad09-4a97-8326-a7587614f828}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\05.Component\Collider">
+      <UniqueIdentifier>{195e1a23-342a-48c3-b4d1-2b1cd04d5af8}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -29,6 +71,54 @@
     </ClInclude>
     <ClInclude Include="pch.h">
       <Filter>Default</Filter>
+    </ClInclude>
+    <ClInclude Include="CEntity.h">
+      <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="CEngine.h">
+      <Filter>Game\01.Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="CObject.h">
+      <Filter>Game\04.Object</Filter>
+    </ClInclude>
+    <ClInclude Include="struct.h">
+      <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="def.h">
+      <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="CKeyMgr.h">
+      <Filter>Game\02.Manager\01.KeyMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="CTimeMgr.h">
+      <Filter>Game\02.Manager\02.TimeMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="CLevel.h">
+      <Filter>Game\03.Level</Filter>
+    </ClInclude>
+    <ClInclude Include="CStartLevel.h">
+      <Filter>Game\03.Level\01.Start</Filter>
+    </ClInclude>
+    <ClInclude Include="CStage01Level.h">
+      <Filter>Game\03.Level\02.State_01</Filter>
+    </ClInclude>
+    <ClInclude Include="CPlayer.h">
+      <Filter>Game\04.Object\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="CLevelMgr.h">
+      <Filter>Game\02.Manager\03.LevelMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="CMissile.h">
+      <Filter>Game\04.Object\Missile</Filter>
+    </ClInclude>
+    <ClInclude Include="CComponent.h">
+      <Filter>Game\05.Component</Filter>
+    </ClInclude>
+    <ClInclude Include="CAnimator.h">
+      <Filter>Game\05.Component\Animator</Filter>
+    </ClInclude>
+    <ClInclude Include="CCollider.h">
+      <Filter>Game\05.Component\Collider</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -49,5 +139,47 @@
       <Filter>Default</Filter>
     </ClCompile>
     <ClCompile Include="43Project.cpp" />
+    <ClCompile Include="CEntity.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
+    <ClCompile Include="CEngine.cpp">
+      <Filter>Game\01.Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="CObject.cpp">
+      <Filter>Game\04.Object</Filter>
+    </ClCompile>
+    <ClCompile Include="CKeyMgr.cpp">
+      <Filter>Game\02.Manager\01.KeyMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="CTimeMgr.cpp">
+      <Filter>Game\02.Manager\02.TimeMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="CLevel.cpp">
+      <Filter>Game\03.Level</Filter>
+    </ClCompile>
+    <ClCompile Include="CStartLevel.cpp">
+      <Filter>Game\03.Level\01.Start</Filter>
+    </ClCompile>
+    <ClCompile Include="CStage01Level.cpp">
+      <Filter>Game\03.Level\02.State_01</Filter>
+    </ClCompile>
+    <ClCompile Include="CPlayer.cpp">
+      <Filter>Game\04.Object\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="CLevelMgr.cpp">
+      <Filter>Game\02.Manager\03.LevelMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="CMissile.cpp">
+      <Filter>Game\04.Object\Missile</Filter>
+    </ClCompile>
+    <ClCompile Include="CComponent.cpp">
+      <Filter>Game\05.Component</Filter>
+    </ClCompile>
+    <ClCompile Include="CAnimator.cpp">
+      <Filter>Game\05.Component\Animator</Filter>
+    </ClCompile>
+    <ClCompile Include="CCollider.cpp">
+      <Filter>Game\05.Component\Collider</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

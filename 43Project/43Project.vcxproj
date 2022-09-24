@@ -130,13 +130,43 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="43Project.h" />
+    <ClInclude Include="CAnimator.h" />
+    <ClInclude Include="CCollider.h" />
+    <ClInclude Include="CComponent.h" />
+    <ClInclude Include="CEngine.h" />
+    <ClInclude Include="CEntity.h" />
+    <ClInclude Include="CKeyMgr.h" />
+    <ClInclude Include="CLevel.h" />
+    <ClInclude Include="CLevelMgr.h" />
+    <ClInclude Include="CMissile.h" />
+    <ClInclude Include="CObject.h" />
+    <ClInclude Include="CPlayer.h" />
+    <ClInclude Include="CStage01Level.h" />
+    <ClInclude Include="CStartLevel.h" />
+    <ClInclude Include="CTimeMgr.h" />
+    <ClInclude Include="def.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="Resource.h" />
+    <ClInclude Include="struct.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="43Project.cpp" />
+    <ClCompile Include="CAnimator.cpp" />
+    <ClCompile Include="CCollider.cpp" />
+    <ClCompile Include="CComponent.cpp" />
+    <ClCompile Include="CEngine.cpp" />
+    <ClCompile Include="CEntity.cpp" />
+    <ClCompile Include="CKeyMgr.cpp" />
+    <ClCompile Include="CLevel.cpp" />
+    <ClCompile Include="CLevelMgr.cpp" />
+    <ClCompile Include="CMissile.cpp" />
+    <ClCompile Include="CObject.cpp" />
+    <ClCompile Include="CPlayer.cpp" />
+    <ClCompile Include="CStage01Level.cpp" />
+    <ClCompile Include="CStartLevel.cpp" />
+    <ClCompile Include="CTimeMgr.cpp" />
     <ClCompile Include="pch.cpp" />
   </ItemGroup>
   <ItemGroup>
