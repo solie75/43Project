@@ -6,7 +6,7 @@ class CLevel :
     public CEntity
 {
 private:
-    vector<CObject*> m_vecObject;
+    vector<CObject*> m_arrLayer[(UINT)LAYER::END];
 
 public:
     virtual void LevelInit() = 0;
@@ -14,7 +14,10 @@ public:
     virtual void LevelRender(HDC _dc);
 
 public:
-    void AddObject(CObject* _pObj) { m_vecObject.push_back(_pObj); }
+    void AddObject(CObject* _pObj, LAYER _layer) 
+    { 
+        m_arrLayer[(UINT)_layer].push_back(_pObj);
+    }
 
 public:
     CLevel();
