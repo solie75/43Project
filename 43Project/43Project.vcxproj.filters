@@ -55,6 +55,9 @@
     <Filter Include="Game\05.Component\Collider">
       <UniqueIdentifier>{195e1a23-342a-48c3-b4d1-2b1cd04d5af8}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Game\04.Object\Monster">
+      <UniqueIdentifier>{472dd1b7-908a-4ce3-a244-6e4a824c881f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -120,6 +123,9 @@
     <ClInclude Include="CCollider.h">
       <Filter>Game\05.Component\Collider</Filter>
     </ClInclude>
+    <ClInclude Include="CMonster.h">
+      <Filter>Game\04.Object\Monster</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="43Project.rc">
@@ -180,6 +186,9 @@
     </ClCompile>
     <ClCompile Include="CCollider.cpp">
       <Filter>Game\05.Component\Collider</Filter>
+    </ClCompile>
+    <ClCompile Include="CMonster.cpp">
+      <Filter>Game\04.Object\Monster</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

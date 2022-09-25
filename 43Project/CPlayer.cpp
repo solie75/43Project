@@ -59,7 +59,7 @@ void CPlayer::ObjectTick()
 			pMissile->SetScale(Vec(20.f, 20.f));
 			pMissile->SetSpeed(400.f);
 			pMissile->SetDir(75.f + 15.f * (float)i); // 75도 90도 105도 세갈래로 미사일 발사
-			pCurLevel->AddObject(pMissile);
+			pCurLevel->AddObject(pMissile, LAYER::MONSTER_PROJECTILE);
 		}
 	}
 	SetPos(vPos);
