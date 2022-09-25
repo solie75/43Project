@@ -8,9 +8,14 @@
 
 #include "CLevel.h"
 
+#include "CCollider.h"
+
 CPlayer::CPlayer()
 	: m_fSpeed(100.f)
 {
+	CreateCollider();
+	GetCollider()->SetOffsetPos(Vec(0.f, 0.f));
+	GetCollider()->SetScale(Vec(80.f, 80.f));
 }
 
 CPlayer::~CPlayer()
@@ -58,10 +63,25 @@ void CPlayer::ObjectTick()
 		}
 	}
 	SetPos(vPos);
+
+	// 여기에서 상위 객체 클래스의 Tick  재호출 Collider 를 위해서
+	CObject::ObjectTick();
 }
 
 void CPlayer::ObjectRender(HDC _dc)
 {
+	Vec vPos = CObject::GetPos();
+	Vec vScale = CObject::GetScale();
+
+	Rectangle(_dc,
+		(int)(vPos.x - vScale.x / 2.f),
+		(int)(vPos.y - vScale.y / 2.f),
+		(int)(vPos.x + vScale.x / 2.f),
+		(int)(vPos.y + vScale.y / 2.f)
+	);
+
+
+	// 부모 오브젝트의 Render 도 실행( Component Render 흐름)
 	CObject::ObjectRender(_dc);
 }
 

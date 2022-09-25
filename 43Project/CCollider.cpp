@@ -35,4 +35,16 @@ void CCollider::ComponentRender(HDC _dc)
 	HBRUSH hOriginBrush = (HBRUSH)SelectObject(_dc, hNULLBrush);
 
 	// 사각형 그리기
+	Rectangle(_dc
+		, (int)(m_vFinalPos.x - m_vScale.x / 2.f)
+		, (int)(m_vFinalPos.y - m_vScale.y / 2.f)
+		, (int)(m_vFinalPos.x + m_vScale.x / 2.f)
+		, (int)(m_vFinalPos.y + m_vScale.y / 2.f));
+
+	// DC 의 GDI 오브젝트를 기존의 펜과 브러시로 되돌린다.
+	SelectObject(_dc, hOriginPen);
+	SelectObject(_dc, hOriginBrush);
+
+	// 사용한 펜을 삭제한다. 브러시는 얻어 쓴것이기 때문에 사제하지 않는다.
+	DeleteObject(hGreenPen);
 }
