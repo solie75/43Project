@@ -27,6 +27,10 @@ public:
 	virtual void ObjectTick();
 	virtual void ObjectRender(HDC _hdc);
 
+	virtual void CollisionBegin(CCollider* _pOther); // BeginOverlap
+	virtual void Colliding(CCollider* _pOther); // OnOverlap
+	virtual void CollisionEnd(CCollider* _pOther); // EndOverlap
+
 public:
 	CObject();
 	virtual ~CObject();

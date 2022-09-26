@@ -8,6 +8,7 @@
 
 CCollider::CCollider(CObject* _pOwner)
 	: CComponent(_pOwner)
+	, m_iOverlapCount(0)
 {
 }
 
@@ -19,6 +20,9 @@ void CCollider::ComponentTick()
 {
 	// 충돌체의 최종 위치값을 결정한다.
 	m_vFinalPos = GetOwner()->GetPos() + m_vOffsetPos;
+
+	// 중첩수가 음수인 경우
+	assert(!(m_iOverlapCount < 0));
 }
 
 void CCollider::ComponentRender(HDC _dc)
@@ -47,4 +51,21 @@ void CCollider::ComponentRender(HDC _dc)
 
 	// 사용한 펜을 삭제한다. 브러시는 얻어 쓴것이기 때문에 사제하지 않는다.
 	DeleteObject(hGreenPen);
+}
+
+void CCollider::BeginOverlap(CCollider* _other)
+{
+	++m_iOverlapCount;
+	GetOwner()->CollisionBegin(_other);
+}
+
+void CCollider::EndOverlap(CCollider* _other)
+{
+	GetOwner()->Colliding(_other);
+}
+
+void CCollider::onOverlap(CCollider* _other)
+{
+	--m_iOverlapCount;
+	GetOwner()->CollisionEnd(_other);
 }

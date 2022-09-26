@@ -132,6 +132,7 @@
     <ClInclude Include="43Project.h" />
     <ClInclude Include="CAnimator.h" />
     <ClInclude Include="CCollider.h" />
+    <ClInclude Include="CCollisionMgr.h" />
     <ClInclude Include="CComponent.h" />
     <ClInclude Include="CEngine.h" />
     <ClInclude Include="CEntity.h" />
@@ -156,6 +157,7 @@
     <ClCompile Include="43Project.cpp" />
     <ClCompile Include="CAnimator.cpp" />
     <ClCompile Include="CCollider.cpp" />
+    <ClCompile Include="CCollisionMgr.cpp" />
     <ClCompile Include="CComponent.cpp" />
     <ClCompile Include="CEngine.cpp" />
     <ClCompile Include="CEntity.cpp" />

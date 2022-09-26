@@ -41,6 +41,18 @@ void CObject::ObjectRender(HDC _hdc)
 
 }
 
+void CObject::CollisionBegin(CCollider* _pOther)
+{
+}
+
+void CObject::Colliding(CCollider* _pOther)
+{
+}
+
+void CObject::CollisionEnd(CCollider* _pOther)
+{
+}
+
 void CObject::CreateCollider()
 {
 	m_pCollider = new CCollider(this);
