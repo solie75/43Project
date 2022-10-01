@@ -93,6 +93,9 @@ void CEngine::CEngineRender()
 
 	// MemBitmap -> MainWindowBitmap
 	BitBlt(m_hDC, 0, 0, m_ptResolution.x, m_ptResolution.y, m_hMemDC, 0, 0, SRCCOPY);
+
+	// TimeMgr Rendering
+	CTimeMgr::GetInst()->TimeMgrRender();
 }
 
 void CEngine::CreatePenBrush()

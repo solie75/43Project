@@ -16,6 +16,7 @@ private:
 public:
 	void TimeMgrInit();
 	void TimeMgrTick();
+	void TimeMgrRender();
 
 public:
 	float GetDeltaTime() { return m_fDeltaTime; }
