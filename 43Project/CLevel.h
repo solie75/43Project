@@ -1,6 +1,8 @@
 #pragma once
 #include "CEntity.h"
-#include "CObject.h"
+
+
+class CObject;
 
 class CLevel :
     public CEntity
@@ -18,6 +20,8 @@ public:
     { 
         m_arrLayer[(UINT)_layer].push_back(_pObj);
     }
+
+    const vector<CObject*>& GetLayer(LAYER _layer) { return m_arrLayer[(UINT)_layer];}
 
 public:
     CLevel();

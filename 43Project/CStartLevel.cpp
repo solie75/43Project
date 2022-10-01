@@ -5,6 +5,8 @@
 #include "CPlayer.h"
 #include "CMonster.h"
 
+#include "CCollisionMgr.h"
+
 CStartLevel::CStartLevel()
 {
 }
@@ -22,9 +24,21 @@ void CStartLevel::LevelInit()
 	AddObject(pObj, LAYER::PLAYER);
 
 	// Monster 생성
-	pObj = new CMonster;
-	pObj->SetPos(Vec(960.f, 200.f));
+	CMonster* pMonster = new CMonster;
+	pMonster->SetPos(Vec(960.f, 200.f));
+	pMonster->SetScale(Vec(150.f, 150.f));
+	pMonster->SetTarget((CPlayer*)pObj);
+	AddObject(pMonster, LAYER::MONSTER);
+
+	/*pObj = new CMonster;
+	pObj->SetPos(Vec(200.f, 200.f));
 	pObj->SetScale(Vec(150.f, 150.f));
-	AddObject(pObj, LAYER::MONSTER);
+	AddObject(pObj, LAYER::MONSTER);*/
+
+	// Level 의 충돌 설정
+	CCollisionMgr::GetInst()->LayerCheck(LAYER::PLAYER, LAYER::MONSTER);
+	CCollisionMgr::GetInst()->LayerCheck(LAYER::MONSTER, LAYER::MONSTER);
+	CCollisionMgr::GetInst()->LayerCheck(LAYER::PLAYER, LAYER::MONSTER_PROJECTILE);
+	CCollisionMgr::GetInst()->LayerCheck(LAYER::PLAYER_PROJECTILE, LAYER::MONSTER);
 }
 

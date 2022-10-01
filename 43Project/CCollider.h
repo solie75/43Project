@@ -16,7 +16,8 @@ public:
     void SetScale(Vec _vScale) { m_vScale = _vScale; }
 
     Vec GetOffsetPos() { return m_vFinalPos; }
-    Vec SetScale() { return m_vScale; }
+    Vec GetFinalPos() { return m_vFinalPos; }
+    Vec GetScale() { return m_vScale; }
 
 public:
     virtual void ComponentTick();
@@ -25,7 +26,7 @@ public:
 public:
     void BeginOverlap(CCollider* _other);
     void EndOverlap(CCollider* _other);
-    void onOverlap(CCollider* _other);
+    void OnOverlap(CCollider* _other);
 
 public:
     CCollider(CObject* _pOwner);

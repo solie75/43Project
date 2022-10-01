@@ -1,6 +1,11 @@
 #include "pch.h"
 #include "CObject.h"
 
+#include "CEventMgr.h"
+
+#include "CCollider.h"
+
+
 CObject::CObject()
 	: m_vPos{}
 	, m_vScale{}
@@ -28,32 +33,17 @@ void CObject::ObjectRender(HDC _hdc)
 	{
 		m_pCollider->ComponentRender(_hdc);
 	}
-
-	/*Vec vPos = CObject::GetPos();
-	Vec vScale = CObject::GetScale();*/
-	
-	/*Rectangle(_hdc,
-		(int)(vPos.x - vScale.x / 2.f),
-		(int)(vPos.y - vScale.y / 2.f),
-		(int)(vPos.x + vScale.x / 2.f),
-		(int)(vPos.y + vScale.y / 2.f)
-	);*/
-
-}
-
-void CObject::CollisionBegin(CCollider* _pOther)
-{
-}
-
-void CObject::Colliding(CCollider* _pOther)
-{
-}
-
-void CObject::CollisionEnd(CCollider* _pOther)
-{
 }
 
 void CObject::CreateCollider()
 {
 	m_pCollider = new CCollider(this);
+}
+
+void CObject::SetDead()
+{
+	tEvent event = {};
+	event.eType = EVENT_TYPE::DELETE_OBJECT;
+	event.wPARAM = (DWORD_PTR)this;
+	CEventMgr::GetInst()->AddEvent(event);
 }

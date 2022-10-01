@@ -5,6 +5,7 @@
 #include "CKeyMgr.h"
 #include "CTimeMgr.h"
 #include "CLevelMgr.h"
+#include "CEventMgr.h"
 
 #include "CLevel.h"
 
@@ -49,7 +50,7 @@ void CPlayer::ObjectTick()
 	if (IsTap(KEY::SPACE))
 	{
 		// 현재 레벨에 생성한 미사일을 추가
-		CLevel* pCurLevel = CLevelMgr::GetInst()->GetCurLevel();
+		//CLevel* pCurLevel = CLevelMgr::GetInst()->GetCurLevel(); // CEventMgr에서 관리 
 
 		// 미사일 생성
 		for (int i = 0; i < 3; ++i)
@@ -59,7 +60,14 @@ void CPlayer::ObjectTick()
 			pMissile->SetScale(Vec(20.f, 20.f));
 			pMissile->SetSpeed(400.f);
 			pMissile->SetDir(75.f + 15.f * (float)i); // 75도 90도 105도 세갈래로 미사일 발사
-			pCurLevel->AddObject(pMissile, LAYER::MONSTER_PROJECTILE);
+			//pCurLevel->AddObject(pMissile, LAYER::PLAYER_PROJECTILE);
+
+			tEvent even ={};
+			even.eType = EVENT_TYPE::CREATE_OBJECT;
+			even.wPARAM = (DWORD_PTR)pMissile;
+			even.lPARAM = (DWORD_PTR)LAYER::PLAYER_PROJECTILE;
+
+			CEventMgr::GetInst()->AddEvent(even);
 		}
 	}
 	SetPos(vPos);
@@ -85,3 +93,17 @@ void CPlayer::ObjectRender(HDC _dc)
 	CObject::ObjectRender(_dc);
 }
 
+void CPlayer::CollisionBegin(CCollider* _pOther)
+{
+	int a = 0;
+}
+
+void CPlayer::Colliding(CCollider* _pOther)
+{
+	int a = 0;
+}
+
+void CPlayer::CollisionEnd(CCollider* _pOther)
+{
+	int a = 0;
+}

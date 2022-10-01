@@ -55,3 +55,10 @@ enum class LAYER
 
 	END = 16
 };
+
+enum class EVENT_TYPE
+{
+	CREATE_OBJECT, // wParam : Object Adress lPARAM : layer Type
+	DELETE_OBJECT, // wParam : Object Adress
+	LEVEL_CHANGE, // wParam : LEVEL_TYPE(Next Level Type)
+};

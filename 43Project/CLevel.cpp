@@ -31,11 +31,28 @@ void CLevel::LevelTick()
 
 void CLevel::LevelRender(HDC _dc)
 {
-	for (size_t i = 0; i < (UINT)LAYER::END; ++i)
+	/*for (size_t i = 0; i < (UINT)LAYER::END; ++i)
 	{
 		for (size_t ii = 0; ii < m_arrLayer[i].size(); ++ii)
 		{
 			m_arrLayer[i][ii]->ObjectRender(_dc);
+		}
+	}*/
+	for (UINT i = 0; i < (UINT)LAYER::END; ++i)
+	{
+		vector<CObject*>::iterator iter = m_arrLayer[i].begin();
+
+		for (; iter != m_arrLayer[i].end();)
+		{
+			if ((*iter)->IsDead())
+			{
+				iter = m_arrLayer[i].erase(iter);
+			}
+			else
+			{
+				(*iter)->ObjectRender(_dc);
+				++iter;
+			}
 		}
 	}
 }

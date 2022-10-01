@@ -18,6 +18,7 @@ private:
 public:
 	HWND GetMainWnd() { return m_hMainWnd; }
 	HPEN GetPen(PEN_TYPE _type) { return m_arrPen[(UINT)_type]; }
+	HDC GetMainDC() { return m_hMemDC; }
 
 	void progress();
 

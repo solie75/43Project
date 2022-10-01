@@ -1,7 +1,7 @@
 #pragma once
 #include "CEntity.h"
 
-#include "CCollider.h"
+class CCollider;
 
 class CObject :
 	public CEntity
@@ -11,6 +11,8 @@ private:
 	Vec m_vScale;
 
 	CCollider* m_pCollider;
+
+	bool m_bDead;
 
 public:
 	void SetPos(Vec _v) { m_vPos = _v; }
@@ -27,12 +29,18 @@ public:
 	virtual void ObjectTick();
 	virtual void ObjectRender(HDC _hdc);
 
-	virtual void CollisionBegin(CCollider* _pOther); // BeginOverlap
-	virtual void Colliding(CCollider* _pOther); // OnOverlap
-	virtual void CollisionEnd(CCollider* _pOther); // EndOverlap
+	virtual void CollisionBegin(CCollider* _pOther) {} // BeginOverlap
+	virtual void Colliding(CCollider* _pOther) {} // OnOverlap
+	virtual void CollisionEnd(CCollider* _pOther) {} // EndOverlap
+
+public:
+	bool IsDead() { return m_bDead; }
+	void SetDead();
 
 public:
 	CObject();
 	virtual ~CObject();
+
+	friend class CEventMgr; // 이것으로 CEventMgr.cpp 에서 CObject* cobj 가 있다면 cobj->m_bDead 가 가능하다.
 };
 

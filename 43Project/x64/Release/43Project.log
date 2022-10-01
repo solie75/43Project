@@ -1,0 +1,32 @@
+﻿  43Project.cpp
+  CAnimator.cpp
+  CCameraMgr.cpp
+  CCollider.cpp
+  CCollisionMgr.cpp
+  CComponent.cpp
+  CEngine.cpp
+  CEntity.cpp
+  CEventMgr.cpp
+  CKeyMgr.cpp
+  CLevel.cpp
+  CLevelMgr.cpp
+  CMissile.cpp
+  CMonster.cpp
+  CObject.cpp
+  CPathMgr.cpp
+  CPlayer.cpp
+  CResource.cpp
+  CResourceMgr.cpp
+  CSound.cpp
+  컴파일하고 있습니다...
+  CStage01Level.cpp
+  CStartLevel.cpp
+  CTexture.cpp
+  CTimeMgr.cpp
+  func.cpp
+  pch.cpp
+  코드를 생성하고 있습니다.
+  Previous IPDB not found, fall back to full compilation.
+  All 474 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  코드를 생성했습니다.
+  43Project.vcxproj -> D:\git\43Project\OutputFile\bin\43Project.exe

@@ -6,15 +6,34 @@ struct Vec
 	float y;
 
 public:
+
+	void Normalize()// ¡§±‘»≠
+	{
+		float fDist = sqrtf(x * x + y * y);
+		x /= fDist;
+		y /= fDist;
+	}
+
 	Vec operator + (Vec _vOther)
 	{
 		return Vec(x + _vOther.x, y + _vOther.y);
+	}
+	
+	Vec operator - (Vec _vOther)
+	{
+		return Vec(x - _vOther.x, y - _vOther.y);
 	}
 
 	void operator += (Vec _vOther)
 	{
 		x += _vOther.x;
 		y += _vOther.y;
+	}
+
+	void operator -= (Vec _vOther)
+	{
+		x -= _vOther.x;
+		y -= _vOther.y;
 	}
 
 public:
@@ -34,4 +53,11 @@ public:
 
 	~Vec()
 	{}
+};
+
+struct tEvent
+{
+	EVENT_TYPE eType;
+	DWORD_PTR wPARAM;
+	DWORD_PTR lPARAM;
 };

@@ -61,15 +61,36 @@
     <Filter Include="Game\02.Manager\04.CollisionMgr">
       <UniqueIdentifier>{cae73619-01ff-44e2-a0d8-eb30e0b12f60}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Game\02.Manager\05.EventMgr">
+      <UniqueIdentifier>{d8d270d7-b123-4f2f-b2eb-7d170dcbe255}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\0.Header">
+      <UniqueIdentifier>{e62265f5-ad9c-419d-80c6-476fca3f9934}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\06.Resource">
+      <UniqueIdentifier>{10e291f8-aa5e-4b0c-be3e-163bb0bc61a8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\06.Resource\Sound">
+      <UniqueIdentifier>{30bf0853-ef09-4719-9fcb-f9cc9f9f352b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\06.Resource\Texture">
+      <UniqueIdentifier>{719df591-5045-4155-9450-08ed661295eb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\02.Manager\06.PathMgr">
+      <UniqueIdentifier>{c9a732d7-01fa-4340-a6b3-7ff6ae393648}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\02.Manager\07.ResourceMgr">
+      <UniqueIdentifier>{27529836-2a4b-4166-b883-8ea22f1f810c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\02.Manager\08.CameraMgr">
+      <UniqueIdentifier>{c4e6a8e4-c55a-446f-8c8a-14e493d6984e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
       <Filter>Default</Filter>
     </ClInclude>
     <ClInclude Include="targetver.h">
-      <Filter>Default</Filter>
-    </ClInclude>
-    <ClInclude Include="Resource.h">
       <Filter>Default</Filter>
     </ClInclude>
     <ClInclude Include="43Project.h">
@@ -86,12 +107,6 @@
     </ClInclude>
     <ClInclude Include="CObject.h">
       <Filter>Game\04.Object</Filter>
-    </ClInclude>
-    <ClInclude Include="struct.h">
-      <Filter>Game</Filter>
-    </ClInclude>
-    <ClInclude Include="def.h">
-      <Filter>Game</Filter>
     </ClInclude>
     <ClInclude Include="CKeyMgr.h">
       <Filter>Game\02.Manager\01.KeyMgr</Filter>
@@ -131,6 +146,39 @@
     </ClInclude>
     <ClInclude Include="CCollisionMgr.h">
       <Filter>Game\02.Manager\04.CollisionMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="CEventMgr.h">
+      <Filter>Game\02.Manager\05.EventMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="def.h">
+      <Filter>Game\0.Header</Filter>
+    </ClInclude>
+    <ClInclude Include="struct.h">
+      <Filter>Game\0.Header</Filter>
+    </ClInclude>
+    <ClInclude Include="func.h">
+      <Filter>Game\0.Header</Filter>
+    </ClInclude>
+    <ClInclude Include="CTexture.h">
+      <Filter>Game\06.Resource\Texture</Filter>
+    </ClInclude>
+    <ClInclude Include="CSound.h">
+      <Filter>Game\06.Resource\Sound</Filter>
+    </ClInclude>
+    <ClInclude Include="Resource.h">
+      <Filter>Default</Filter>
+    </ClInclude>
+    <ClInclude Include="CResource.h">
+      <Filter>Game\06.Resource</Filter>
+    </ClInclude>
+    <ClInclude Include="CPathMgr.h">
+      <Filter>Game\02.Manager\06.PathMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="CResourceMgr.h">
+      <Filter>Game\02.Manager\07.ResourceMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="CCameraMgr.h">
+      <Filter>Game\02.Manager\08.CameraMgr</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -198,6 +246,30 @@
     </ClCompile>
     <ClCompile Include="CCollisionMgr.cpp">
       <Filter>Game\02.Manager\04.CollisionMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="CEventMgr.cpp">
+      <Filter>Game\02.Manager\05.EventMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="func.cpp">
+      <Filter>Game\0.Header</Filter>
+    </ClCompile>
+    <ClCompile Include="CResource.cpp">
+      <Filter>Game\06.Resource</Filter>
+    </ClCompile>
+    <ClCompile Include="CTexture.cpp">
+      <Filter>Game\06.Resource\Texture</Filter>
+    </ClCompile>
+    <ClCompile Include="CSound.cpp">
+      <Filter>Game\06.Resource\Sound</Filter>
+    </ClCompile>
+    <ClCompile Include="CPathMgr.cpp">
+      <Filter>Game\02.Manager\06.PathMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="CResourceMgr.cpp">
+      <Filter>Game\02.Manager\07.ResourceMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="CCameraMgr.cpp">
+      <Filter>Game\02.Manager\08.CameraMgr</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

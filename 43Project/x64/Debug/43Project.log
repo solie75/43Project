@@ -1,5 +1,12 @@
-﻿  CLevel.cpp
-  CLevelMgr.cpp
-  CPlayer.cpp
-  CStage01Level.cpp
-  43Project.vcxproj -> C:\Users\shinjoongeun\Documents\GitHub\43Project\x64\Debug\43Project.exe
+﻿  43Project.cpp
+  CCameraMgr.cpp
+  CCollider.cpp
+  CEngine.cpp
+  CPathMgr.cpp
+  CResource.cpp
+  CResourceMgr.cpp
+  CSound.cpp
+  CTexture.cpp
+  CTimeMgr.cpp
+  LINK : D:\git\43Project\OutputFile\bin_d\43Project.exe을(를) 찾을 수 없거나 마지막 증분 링크에 의해 빌드되지 않았습니다. 전체 링크를 수행하고 있습니다.
+  43Project.vcxproj -> D:\git\43Project\OutputFile\bin_d\43Project.exe

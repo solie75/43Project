@@ -29,13 +29,25 @@ void CCollider::ComponentRender(HDC _dc)
 {
 	// 충돌체를 그린다.
 	// 필요한 펜과 브러시를 만든다( 또는 가져온다. )
-	HPEN hGreenPen = CreatePen(PS_SOLID, 1, RGB(0, 255, 0));
+	HPEN hPen = nullptr;
+
+	if (0 < m_iOverlapCount)
+	{
+		hPen = CEngine::GetInst()->GetPen(PEN_TYPE::RED);
+	}
+	else
+	{
+		hPen = CEngine::GetInst()->GetPen(PEN_TYPE::GREEN);
+	}
+	//HPEN hGreenPen = CreatePen(PS_SOLID, 1, RGB(0, 255, 0));
+	
 	// 펜과 브러쉬 가져오는 코드
 	// HPEN hGreenPen = CEngine::GetInst()->GetPen(PEN_TYPE::GREEN);
+
 	HBRUSH hNULLBrush = (HBRUSH)GetStockObject(NULL_BRUSH);
 
 	// DC 의 기존 펜과 브러시를 새로 가져온 것으로 대체
-	HPEN hOriginPen = (HPEN)SelectObject(_dc, hGreenPen);
+	HPEN hOriginPen = (HPEN)SelectObject(_dc, hPen);
 	HBRUSH hOriginBrush = (HBRUSH)SelectObject(_dc, hNULLBrush);
 
 	// 사각형 그리기
@@ -50,7 +62,7 @@ void CCollider::ComponentRender(HDC _dc)
 	SelectObject(_dc, hOriginBrush);
 
 	// 사용한 펜을 삭제한다. 브러시는 얻어 쓴것이기 때문에 사제하지 않는다.
-	DeleteObject(hGreenPen);
+	//DeleteObject(hGreenPen);
 }
 
 void CCollider::BeginOverlap(CCollider* _other)
@@ -59,12 +71,12 @@ void CCollider::BeginOverlap(CCollider* _other)
 	GetOwner()->CollisionBegin(_other);
 }
 
-void CCollider::EndOverlap(CCollider* _other)
+void CCollider::OnOverlap(CCollider* _other)
 {
 	GetOwner()->Colliding(_other);
 }
 
-void CCollider::onOverlap(CCollider* _other)
+void CCollider::EndOverlap(CCollider* _other)
 {
 	--m_iOverlapCount;
 	GetOwner()->CollisionEnd(_other);

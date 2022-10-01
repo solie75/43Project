@@ -4,6 +4,8 @@
 #include "CTimeMgr.h"
 #include "CKeyMgr.h"
 #include "CLevelMgr.h"
+#include "CCollisionMgr.h"
+#include "CEventMgr.h"
 
 
 CEngine::CEngine()
@@ -49,22 +51,35 @@ void CEngine::CEngineInit(HWND _hWnd, UINT _iWidth, UINT _iHeight)
 	CTimeMgr::GetInst()->TimeMgrInit();
 	CKeyMgr::GetInst()->KeyMgrInit();
 	CLevelMgr::GetInst()->LevelMgrInit();
+
 }
 
 void CEngine::progress()
 {
+	// 논리적 연산
 	CEngineTick();
 
+	// 화면 랜더링 갱신
 	CEngineRender();
+
+	// 다음 프레임에 적용될 이벤트 처리
+	CEventMgr::GetInst()->EventMgrTick();
 }
 
 
 void CEngine::CEngineTick()
 {
+	// FPS, DeltaTime 계산
 	CTimeMgr::GetInst()->TimeMgrTick();
+
+	// Key Event 확인
 	CKeyMgr::GetInst()->KeyMgrTick();
+
+	// 해당 Level 의 모든 객체 Tick 호출
 	CLevelMgr::GetInst()->LevelMgrTick();
 
+	// 모든 충돌체 호출
+	CCollisionMgr::GetInst()->CollisionMgrTick();
 }
 
 void CEngine::CEngineRender()
@@ -82,6 +97,10 @@ void CEngine::CEngineRender()
 
 void CEngine::CreatePenBrush()
 {
+
+	m_arrPen[(UINT)PEN_TYPE::RED] = CreatePen(PS_SOLID, 1, RGB(255, 0, 0));
+	m_arrPen[(UINT)PEN_TYPE::GREEN] = CreatePen(PS_SOLID, 1, RGB(0, 255, 0));
+	m_arrPen[(UINT)PEN_TYPE::BLUE] = CreatePen(PS_SOLID, 1, RGB(0, 0, 255));
 	//// DC 펜 설정
 	//HPEN hRedPen = CreatePen(PS_SOLID, 1, RGB(255, 0, 0));
 	//HPEN hBlackPen = (HPEN)SelectObject(m_hDC, hRedPen);

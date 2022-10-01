@@ -7,6 +7,7 @@
 CMissile::CMissile()
 	: m_fSpeed(200.f)
 	, m_fDegree(80.f)
+	, m_fTime(0.f)
 {
 	CreateCollider();
 	GetCollider()->SetScale(Vec(20.f, 20.f));
@@ -42,3 +43,7 @@ void CMissile::ObjectRender(HDC _dc)
 	CObject::ObjectRender(_dc);
 }
 
+void CMissile::CollisionBegin(CCollider* _pOther)
+{
+	//SetDead();
+}
