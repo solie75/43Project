@@ -23,6 +23,11 @@ enum class KEY
 	E,
 	R,
 
+	A,
+	S,
+	D,
+	F,
+
 	END,
 };
 

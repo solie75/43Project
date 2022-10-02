@@ -1,17 +1,16 @@
 #include "pch.h"
 #include "CPlayer.h"
-#include "CMissile.h"
-#include "CTexture.h"
 
 #include "CKeyMgr.h"
 #include "CTimeMgr.h"
-#include "CLevelMgr.h"
 #include "CEventMgr.h"
-#include "CResourceMgr.h"
+#include "CPathMgr.h"
+#include "CTexture.h"
+#include "CCameraMgr.h"
 
-#include "CLevel.h"
-
+#include "CMissile.h"
 #include "CCollider.h"
+#include "CResourceMgr.h"
 
 CPlayer::CPlayer()
 	: m_fSpeed(100.f)
@@ -86,7 +85,7 @@ void CPlayer::ObjectTick()
 
 void CPlayer::ObjectRender(HDC _dc)
 {
-	Vec vPos = CObject::GetPos();
+	Vec vPos = CCameraMgr::GetInst()->GetRenderPos(GetPos());
 	Vec vScale = CObject::GetScale();
 
 	Vec vLeftTop = Vec(vPos.x - m_pTexture->Width() / 2.f, vPos.y - m_pTexture->Height() / 2.f);

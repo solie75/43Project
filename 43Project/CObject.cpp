@@ -28,11 +28,11 @@ void CObject::ObjectTick()
 	}
 }
 
-void CObject::ObjectRender(HDC _hdc)
+void CObject::ObjectRender(HDC _dc)
 {
 	if (nullptr != m_pCollider)
 	{
-		m_pCollider->ComponentRender(_hdc);
+		m_pCollider->ComponentRender(_dc);
 	}
 }
 

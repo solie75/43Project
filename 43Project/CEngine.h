@@ -19,11 +19,11 @@ public:
 	HWND GetMainWnd() { return m_hMainWnd; }
 	HPEN GetPen(PEN_TYPE _type) { return m_arrPen[(UINT)_type]; }
 	HDC GetMainDC() { return m_hMemDC; }
-
-	void progress();
+	POINT GetResolution() { return m_ptResolution; }
 
 public:
 	void CEngineInit(HWND _hWnd, UINT _iWidth, UINT _iHeight);
+	void progress();
 
 private:
 	void CEngineTick();

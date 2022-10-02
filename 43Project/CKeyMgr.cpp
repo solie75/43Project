@@ -24,6 +24,11 @@ int g_arrVK[(UINT)KEY::END]
 	 'W',
 	 'E',
 	 'R',
+
+	 'A',
+	 'S',
+	 'D',
+	 'F',
 };
 
 CKeyMgr::CKeyMgr() {}

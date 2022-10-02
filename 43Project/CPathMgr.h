@@ -5,10 +5,10 @@ class CPathMgr
 {
 	SINGLE(CPathMgr)
 private:
-	wchar_t m_szContentPath[245];
+	wchar_t m_szContentPath[256];
 
 public:
-	void PathMgrTick();
+	void PathMgrInit();
 	void PathMgrRender();
 
 public:

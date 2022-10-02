@@ -9,7 +9,7 @@ CPathMgr::CPathMgr()
 CPathMgr::~CPathMgr()
 {}
 
-void CPathMgr::PathMgrTick()
+void CPathMgr::PathMgrInit()
 {
 	GetCurrentDirectory(256, m_szContentPath);
 

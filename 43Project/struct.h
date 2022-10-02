@@ -30,10 +30,22 @@ public:
 		y += _vOther.y;
 	}
 
+
+	Vec operator / (float _f)
+	{
+		return Vec(x / _f, y / _f);
+	}
+
 	void operator -= (Vec _vOther)
 	{
 		x -= _vOther.x;
 		y -= _vOther.y;
+	}
+
+	void operator /= (float _f)
+	{
+		x /= _f;
+		y /= _f;
 	}
 
 public:
@@ -50,6 +62,13 @@ public:
 		: x((float)_x)
 		, y((float)_y)
 	{}
+
+	Vec(POINT _pt)
+		: x((float)_pt.x)
+		, y((float)_pt.y)
+	{
+
+	}
 
 	~Vec()
 	{}

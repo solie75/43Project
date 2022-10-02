@@ -6,11 +6,17 @@
 #include "CLevelMgr.h"
 #include "CCollisionMgr.h"
 #include "CEventMgr.h"
+#include "CPathMgr.h"
+#include "CCameraMgr.h"
 
 
 CEngine::CEngine()
 	: m_hMainWnd(nullptr)
 	, m_hDC(nullptr)
+	, m_hMemDC(nullptr)
+	, m_hMemBit(nullptr)
+	, m_ptResolution{}
+	, m_arrPen{}
 {
 
 }
@@ -48,6 +54,7 @@ void CEngine::CEngineInit(HWND _hWnd, UINT _iWidth, UINT _iHeight)
 	DeleteObject(hPrevBit);
 
 	// Manager 초기화
+	CPathMgr::GetInst()->PathMgrInit();
 	CTimeMgr::GetInst()->TimeMgrInit();
 	CKeyMgr::GetInst()->KeyMgrInit();
 	CLevelMgr::GetInst()->LevelMgrInit();
@@ -74,6 +81,9 @@ void CEngine::CEngineTick()
 
 	// Key Event 확인
 	CKeyMgr::GetInst()->KeyMgrTick();
+
+	// Camera
+	CCameraMgr::GetInst()->CameraMgrTick();
 
 	// 해당 Level 의 모든 객체 Tick 호출
 	CLevelMgr::GetInst()->LevelMgrTick();
