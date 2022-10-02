@@ -42,6 +42,6 @@ public:
 	CObject();
 	virtual ~CObject();
 
-	friend class CEventMgr; // 이것으로 CEventMgr.cpp 에서 CObject* cobj 가 있다면 cobj->m_bDead 가 가능하다.
+	friend class CEventMgr;
 };
 

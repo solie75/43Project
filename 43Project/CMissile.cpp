@@ -1,8 +1,11 @@
 #include "pch.h"
 #include "CMissile.h"
 
-#include "CTimeMgr.h"
 #include "CCollider.h"
+
+#include "CTimeMgr.h"
+#include "CCameraMgr.h"
+
 
 CMissile::CMissile()
 	: m_fSpeed(200.f)
@@ -32,7 +35,7 @@ void CMissile::ObjectTick()
 
 void CMissile::ObjectRender(HDC _dc)
 {
-	Vec vPos = GetPos();
+	Vec vPos = CCameraMgr::GetInst()->GetRenderPos(GetPos());
 	Vec vSize = GetScale();
 
 	Ellipse(_dc, (int)(vPos.x - vSize.x / 2.f)

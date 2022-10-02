@@ -86,7 +86,7 @@ void CPlayer::ObjectTick()
 void CPlayer::ObjectRender(HDC _dc)
 {
 	Vec vPos = CCameraMgr::GetInst()->GetRenderPos(GetPos());
-	Vec vScale = CObject::GetScale();
+	Vec vScale = GetScale();
 
 	Vec vLeftTop = Vec(vPos.x - m_pTexture->Width() / 2.f, vPos.y - m_pTexture->Height() / 2.f);
 
