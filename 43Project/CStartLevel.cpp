@@ -1,10 +1,12 @@
 #include "pch.h"
 #include "CStartLevel.h"
 
+#include "CEngine.h"
 #include "CObject.h"
 #include "CPlayer.h"
 #include "CMonster.h"
 
+#include "CCameraMgr.h"
 #include "CCollisionMgr.h"
 
 CStartLevel::CStartLevel()
@@ -40,5 +42,8 @@ void CStartLevel::LevelInit()
 	CCollisionMgr::GetInst()->LayerCheck(LAYER::MONSTER, LAYER::MONSTER);
 	CCollisionMgr::GetInst()->LayerCheck(LAYER::PLAYER, LAYER::MONSTER_PROJECTILE);
 	CCollisionMgr::GetInst()->LayerCheck(LAYER::PLAYER_PROJECTILE, LAYER::MONSTER);
+	
+	Vec vResolution = CEngine::GetInst()->GetResolution();
+	CCameraMgr::GetInst()->SetLook(vResolution / 2.f);
 }
 

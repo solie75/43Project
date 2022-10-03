@@ -4,6 +4,8 @@
 
 #include "CObject.h"
 
+#include "CCameraMgr.h"
+
 
 
 CCollider::CCollider(CObject* _pOwner)
@@ -50,12 +52,14 @@ void CCollider::ComponentRender(HDC _dc)
 	HPEN hOriginPen = (HPEN)SelectObject(_dc, hPen);
 	HBRUSH hOriginBrush = (HBRUSH)SelectObject(_dc, hNULLBrush);
 
+	Vec vRenderPos = CCameraMgr::GetInst()->GetRenderPos(m_vFinalPos);
+
 	// 사각형 그리기
 	Rectangle(_dc
-		, (int)(m_vFinalPos.x - m_vScale.x / 2.f)
-		, (int)(m_vFinalPos.y - m_vScale.y / 2.f)
-		, (int)(m_vFinalPos.x + m_vScale.x / 2.f)
-		, (int)(m_vFinalPos.y + m_vScale.y / 2.f));
+		, (int)(vRenderPos.x - m_vScale.x / 2.f)
+		, (int)(vRenderPos.y - m_vScale.y / 2.f)
+		, (int)(vRenderPos.x + m_vScale.x / 2.f)
+		, (int)(vRenderPos.y + m_vScale.y / 2.f));
 
 	// DC 의 GDI 오브젝트를 기존의 펜과 브러시로 되돌린다.
 	SelectObject(_dc, hOriginPen);

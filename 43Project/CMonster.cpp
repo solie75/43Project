@@ -5,6 +5,7 @@
 #include "CCollider.h"
 
 #include "CTimeMgr.h"
+#include "CCameraMgr.h"
 
 
 CMonster::CMonster()
@@ -22,7 +23,7 @@ CMonster::~CMonster()
 
 void CMonster::ObjectTick()
 {
-	if (IsValid(m_pTarget))
+	/*if (IsValid(m_pTarget))
 	{
 		Vec vTargetPos = m_pTarget->GetPos();
 		m_pTarget->SetName(L"Player");
@@ -35,14 +36,14 @@ void CMonster::ObjectTick()
 		vPos.y += vDir.y * 100.f * DT;
 
 		SetPos(vPos);
-	}
+	}*/ // 眠利扁瓷 林籍贸府
 
 	CObject::ObjectTick();
 }
 
 void CMonster::ObjectRender(HDC _dc)
 {
-	Vec vPos = GetPos();
+	Vec vPos = CCameraMgr::GetInst()->GetRenderPos(GetPos());
 	Vec vSize = GetScale();
 
 	HBRUSH hNullBrush = (HBRUSH)GetStockObject(NULL_BRUSH);
