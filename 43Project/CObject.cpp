@@ -4,12 +4,14 @@
 #include "CEventMgr.h"
 
 #include "CCollider.h"
+#include "CAnimator.h"
 
 
 CObject::CObject()
 	: m_vPos{}
 	, m_vScale{}
 	, m_pCollider(nullptr)
+	, m_pAnimator(nullptr)
 	, m_bDead(false)
 {
 }
@@ -26,6 +28,10 @@ void CObject::ObjectTick()
 	{
 		m_pCollider->ComponentTick();
 	}
+	if (nullptr != m_pAnimator)
+	{
+		m_pAnimator->ComponentTick();
+	}
 }
 
 void CObject::ObjectRender(HDC _dc)
@@ -34,11 +40,20 @@ void CObject::ObjectRender(HDC _dc)
 	{
 		m_pCollider->ComponentRender(_dc);
 	}
+	if (nullptr != m_pAnimator)
+	{
+		m_pAnimator->ComponentRender(_dc);
+	}
 }
 
 void CObject::CreateCollider()
 {
 	m_pCollider = new CCollider(this);
+}
+
+void CObject::CreateAnimator()
+{
+	m_pAnimator = new CAnimator(this);
 }
 
 void CObject::SetDead()

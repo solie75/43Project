@@ -2,6 +2,7 @@
 #include "CEntity.h"
 
 class CCollider;
+class CAnimator;
 
 class CObject :
 	public CEntity
@@ -11,6 +12,7 @@ private:
 	Vec m_vScale;
 
 	CCollider* m_pCollider;
+	CAnimator* m_pAnimator;
 
 	bool m_bDead;
 
@@ -22,8 +24,10 @@ public:
 	Vec GetScale() { return m_vScale; }
 
 	void CreateCollider();
+	void CreateAnimator();
 
 	CCollider* GetCollider() { return m_pCollider; }
+	CAnimator* GetAnimator() { return m_pAnimator; }
 
 public:
 	virtual void ObjectTick();

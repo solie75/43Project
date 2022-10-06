@@ -85,6 +85,9 @@
     <Filter Include="Game\02.Manager\08.CameraMgr">
       <UniqueIdentifier>{c4e6a8e4-c55a-446f-8c8a-14e493d6984e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Game\05.Component\Animator\Animation">
+      <UniqueIdentifier>{0a43fecf-be36-4286-8e11-d156e67d77ad}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -180,6 +183,9 @@
     <ClInclude Include="CCameraMgr.h">
       <Filter>Game\02.Manager\08.CameraMgr</Filter>
     </ClInclude>
+    <ClInclude Include="CAnimation.h">
+      <Filter>Game\05.Component\Animator\Animation</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="43Project.rc">
@@ -270,6 +276,9 @@
     </ClCompile>
     <ClCompile Include="CCameraMgr.cpp">
       <Filter>Game\02.Manager\08.CameraMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="CAnimation.cpp">
+      <Filter>Game\05.Component\Animator\Animation</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

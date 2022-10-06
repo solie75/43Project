@@ -10,6 +10,7 @@
 
 #include "CMissile.h"
 #include "CCollider.h"
+#include "CAnimator.h"
 #include "CResourceMgr.h"
 
 CPlayer::CPlayer()
@@ -21,7 +22,16 @@ CPlayer::CPlayer()
 	GetCollider()->SetScale(Vec(80.f, 80.f));
 
 	// Image Loading
-	m_pTexture = CResourceMgr::GetInst()->LoadTexture(L"PlayerImage", L"texture\\Fighter.bmp");
+	//m_pTexture = CResourceMgr::GetInst()->LoadTexture(L"PlayerImage", L"texture\\Fighter.bmp");
+	
+	// Animator에서 사용할 Image 로딩 (120, 130)
+	CreateAnimator();
+	CTexture* pLinkTex = CResourceMgr::GetInst()->LoadTexture(L"LINK", L"\\texture\\link.bmp");
+
+	GetAnimator()->CreateAnimation(L"WALk_DOWN", pLinkTex, Vec(0.f, 520.f), Vec(120.f, 130.f), 10, 0.1f);
+	GetAnimator()->CreateAnimation(L"WALk_LEFT", pLinkTex, Vec(0.f, 650.f), Vec(120.f, 130.f), 10, 0.1f);
+	GetAnimator()->CreateAnimation(L"WALk_UP", pLinkTex, Vec(0.f, 780.f), Vec(120.f, 130.f), 10, 0.1f);
+	GetAnimator()->CreateAnimation(L"WALk_RIGHT", pLinkTex, Vec(0.f, 910.f), Vec(120.f, 130.f), 10, 0.1f);
 }
 
 CPlayer::~CPlayer()
@@ -50,6 +60,23 @@ void CPlayer::ObjectTick()
 	if (IsPressed(KEY::DOWN))
 	{
 		vPos.y += m_fSpeed * DT;
+	}
+
+	if (IsTap(KEY::LEFT))
+	{
+		GetAnimator()->Play(L"WALk_LEFT", true);
+	}
+	if (IsTap(KEY::RIGHT))
+	{
+		GetAnimator()->Play(L"WALk_RIGHT", true);
+	}
+	if (IsTap(KEY::UP))
+	{
+		GetAnimator()->Play(L"WALk_UP", true);
+	}
+	if (IsTap(KEY::DOWN))
+	{
+		GetAnimator()->Play(L"WALk_DOWN", true);
 	}
 
 	if (IsTap(KEY::SPACE))
@@ -85,12 +112,12 @@ void CPlayer::ObjectTick()
 
 void CPlayer::ObjectRender(HDC _dc)
 {
-	Vec vPos = CCameraMgr::GetInst()->GetRenderPos(GetPos());
+	/*Vec vPos = CCameraMgr::GetInst()->GetRenderPos(GetPos());
 	Vec vScale = GetScale();
 
-	Vec vLeftTop = Vec(vPos.x - m_pTexture->Width() / 2.f, vPos.y - m_pTexture->Height() / 2.f);
+	Vec vLeftTop = Vec(vPos.x - m_pTexture->Width() / 2.f, vPos.y - m_pTexture->Height() / 2.f);*/
 
-	TransparentBlt(_dc
+	/*TransparentBlt(_dc
 		,(int)vLeftTop.x
 		,(int)vLeftTop.y
 		,(int)m_pTexture->Width()
@@ -100,7 +127,7 @@ void CPlayer::ObjectRender(HDC _dc)
 		,(int)m_pTexture->Width()
 		,(int)m_pTexture->Height()
 		,RGB(255, 0, 255)
-	);
+	);*/
 
 	/*Rectangle(_dc,
 		(int)(vPos.x - vScale.x / 2.f),

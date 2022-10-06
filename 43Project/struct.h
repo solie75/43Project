@@ -80,3 +80,11 @@ struct tEvent
 	DWORD_PTR wPARAM;
 	DWORD_PTR lPARAM;
 };
+
+struct tAnimFrame
+{
+	Vec vLeftTop; // Atlas 내에서 가져올 이미지의 최상단 좌표 
+	Vec vSize; // 프레임 사이즈
+	Vec vOffset; // 추가 이동
+	float fDuration; // 해당 프레임 노출 시간
+};
