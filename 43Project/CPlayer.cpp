@@ -11,6 +11,7 @@
 #include "CMissile.h"
 #include "CCollider.h"
 #include "CAnimator.h"
+#include "CAnimation.h"
 #include "CResourceMgr.h"
 
 CPlayer::CPlayer()
@@ -28,10 +29,20 @@ CPlayer::CPlayer()
 	CreateAnimator();
 	CTexture* pLinkTex = CResourceMgr::GetInst()->LoadTexture(L"LINK", L"\\texture\\link.bmp");
 
-	GetAnimator()->CreateAnimation(L"WALk_DOWN", pLinkTex, Vec(0.f, 520.f), Vec(120.f, 130.f), 10, 0.1f);
-	GetAnimator()->CreateAnimation(L"WALk_LEFT", pLinkTex, Vec(0.f, 650.f), Vec(120.f, 130.f), 10, 0.1f);
-	GetAnimator()->CreateAnimation(L"WALk_UP", pLinkTex, Vec(0.f, 780.f), Vec(120.f, 130.f), 10, 0.1f);
-	GetAnimator()->CreateAnimation(L"WALk_RIGHT", pLinkTex, Vec(0.f, 910.f), Vec(120.f, 130.f), 10, 0.1f);
+	//GetAnimator()->CreateAnimation(L"WALK_DOWN", pLinkTex, Vec(0.f, 520.f), Vec(120.f, 130.f), 10, 0.1f);
+	//GetAnimator()->CreateAnimation(L"WALK_LEFT", pLinkTex, Vec(0.f, 650.f), Vec(120.f, 130.f), 10, 0.1f);
+	//GetAnimator()->CreateAnimation(L"WALK_UP", pLinkTex, Vec(0.f, 780.f), Vec(120.f, 130.f), 10, 0.1f);
+	//GetAnimator()->CreateAnimation(L"WALK_RIGHT", pLinkTex, Vec(0.f, 910.f), Vec(120.f, 130.f), 10, 0.1f);
+
+	//GetAnimator()->FindAnimation(L"WALK_DOWN")->Save(L"animation\\WALK_DOWN.anim");
+	//GetAnimator()->FindAnimation(L"WALK_LEFT")->Save(L"animation\\WALK_LEFT.anim");
+	//GetAnimator()->FindAnimation(L"WALK_UP")->Save(L"animation\\WALK_UP.anim");
+	//GetAnimator()->FindAnimation(L"WALK_RIGHT")->Save(L"animation\\WALK_RIGHT.anim");
+
+	GetAnimator()->LoadAnimation(L"animation\\WALK_DOWN.anim");
+	GetAnimator()->LoadAnimation(L"animation\\WALK_LEFT.anim");
+	GetAnimator()->LoadAnimation(L"animation\\WALK_UP.anim");
+	GetAnimator()->LoadAnimation(L"animation\\WALK_RIGHT.anim");
 }
 
 CPlayer::~CPlayer()
@@ -64,19 +75,19 @@ void CPlayer::ObjectTick()
 
 	if (IsTap(KEY::LEFT))
 	{
-		GetAnimator()->Play(L"WALk_LEFT", true);
+		GetAnimator()->Play(L"WALK_LEFT", true);
 	}
 	if (IsTap(KEY::RIGHT))
 	{
-		GetAnimator()->Play(L"WALk_RIGHT", true);
+		GetAnimator()->Play(L"WALK_RIGHT", true);
 	}
 	if (IsTap(KEY::UP))
 	{
-		GetAnimator()->Play(L"WALk_UP", true);
+		GetAnimator()->Play(L"WALK_UP", true);
 	}
 	if (IsTap(KEY::DOWN))
 	{
-		GetAnimator()->Play(L"WALk_DOWN", true);
+		GetAnimator()->Play(L"WALK_DOWN", true);
 	}
 
 	if (IsTap(KEY::SPACE))

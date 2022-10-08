@@ -1,3 +1,4 @@
-﻿  CAnimation.cpp
-D:\git\43Project\43Project\CAnimation.cpp(63,39): warning C4267: '=': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+﻿  CMonster.cpp
+D:\git\43Project\43Project\CMonster.cpp(81,12): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+D:\git\43Project\43Project\CMonster.cpp(80,12): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
   43Project.vcxproj -> D:\git\43Project\OutputFile\bin_d\43Project.exe

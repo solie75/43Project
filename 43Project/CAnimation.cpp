@@ -62,7 +62,7 @@ void CAnimation::AnimationTick()
 
 		if (m_vecFrame.size() <= m_iCurFrame)
 		{
-			m_iCurFrame = m_vecFrame.size() - 1;
+			m_iCurFrame = (int)m_vecFrame.size() - 1;
 			m_bFinish = true;
 		}
 	}
@@ -91,7 +91,7 @@ void CAnimation::AnimationRender(HDC _dc)
 		
 }
 
-void CAnimation::Save(wstring& _strRelativePath )
+void CAnimation::Save(const wstring& _strRelativePath )
 {
 	wstring strFilePath = CPathMgr::GetInst()->GetContentPath();
 	strFilePath += _strRelativePath;
@@ -139,7 +139,7 @@ void CAnimation::Save(wstring& _strRelativePath )
 
 	for (size_t i = 0; i < iFrameCount; ++i)
 	{
-		fwprintf(pFile, L"[%d_FRAME]\n", i);
+		fwprintf(pFile, L"[%zd_FRAME]\n", i);
 
 		// LEFT_TOP
 		fwprintf_s(pFile, L"[LEFT_TOP]\n");
@@ -214,9 +214,6 @@ void CAnimation::Load(const wstring& _strRelativePath)
 
 				while (true)
 				{
-					wchar_t szBuffer[256] = {};
-					fwscanf_s(pFile, L"%s", szBuffer, 256);
-
 					wchar_t szBuffer[256] = {};
 					fwscanf_s(pFile, L"%s", szBuffer, 256);
 

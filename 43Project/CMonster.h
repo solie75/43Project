@@ -1,12 +1,15 @@
 #pragma once
 #include "CObject.h"
 
+class CTexture;
+
 class CMonster :
     public CObject
 {
 public:
     UINT m_iHP;
     CObject* m_pTarget;
+    CTexture* m_pTexture;
 
 private:
     virtual void ObjectTick() override;

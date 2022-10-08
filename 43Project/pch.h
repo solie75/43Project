@@ -9,6 +9,8 @@
 #include <memory.h>
 #include <tchar.h>
 
+#include <crtdbg.h>
+
 #include <assert.h>
 
 #include <vector>

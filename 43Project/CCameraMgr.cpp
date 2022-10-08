@@ -11,6 +11,14 @@ CCameraMgr::CCameraMgr()
 CCameraMgr::~CCameraMgr()
 {}
 
+void CCameraMgr::FadeOut(float _fTerm)
+{
+}
+
+void CCameraMgr::FadeIn(float _fTerm)
+{
+}
+
 void CCameraMgr::CameraMgrTick()
 {
 	if (IsPressed(KEY::W))

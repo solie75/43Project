@@ -11,7 +11,7 @@
 						type();\
 						~type();
 
-#define DT CTimeMgr::GetInst()->GetDeltaTime();
+#define DT CTimeMgr::GetInst()->GetDeltaTime()
 
 #define PI 3.1415926535f
 
@@ -61,4 +61,11 @@ enum class EVENT_TYPE
 	CREATE_OBJECT, // wParam : Object Adress lPARAM : layer Type
 	DELETE_OBJECT, // wParam : Object Adress
 	LEVEL_CHANGE, // wParam : LEVEL_TYPE(Next Level Type)
+};
+
+enum class CAMERA_EFFECT
+{
+	FADE_IN,
+	FADE_OUT,
+	NONE
 };

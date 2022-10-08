@@ -7,6 +7,7 @@
 #include "CMonster.h"
 
 #include "CCameraMgr.h"
+#include "CResourceMgr.h"
 #include "CCollisionMgr.h"
 
 CStartLevel::CStartLevel()
@@ -19,6 +20,9 @@ CStartLevel::~CStartLevel()
 
 void CStartLevel::LevelInit()
 {
+	// Textrue 로딩
+	CResourceMgr::GetInst()->LoadTexture(L"FighterPlane", L"texture\\FighterPlane.bmp");
+
 	// Object 생성
 	CObject* pObj = new CPlayer;
 	pObj->SetPos(Vec(500.f, 500.f));
