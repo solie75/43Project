@@ -138,9 +138,6 @@
     <ClInclude Include="CComponent.h">
       <Filter>Game\05.Component</Filter>
     </ClInclude>
-    <ClInclude Include="CAnimator.h">
-      <Filter>Game\05.Component\Animator</Filter>
-    </ClInclude>
     <ClInclude Include="CCollider.h">
       <Filter>Game\05.Component\Collider</Filter>
     </ClInclude>
@@ -185,6 +182,9 @@
     </ClInclude>
     <ClInclude Include="CAnimation.h">
       <Filter>Game\05.Component\Animator\Animation</Filter>
+    </ClInclude>
+    <ClInclude Include="CAnimator.h">
+      <Filter>Game\05.Component\Animator</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

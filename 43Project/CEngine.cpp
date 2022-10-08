@@ -1,5 +1,6 @@
 #include "pch.h"
 #include "CEngine.h"
+#include "CTexture.h"
 
 #include "CTimeMgr.h"
 #include "CKeyMgr.h"
@@ -8,15 +9,17 @@
 #include "CEventMgr.h"
 #include "CPathMgr.h"
 #include "CCameraMgr.h"
+#include "CResourceMgr.h"
 
 
 CEngine::CEngine()
 	: m_hMainWnd(nullptr)
 	, m_hDC(nullptr)
-	, m_hMemDC(nullptr)
-	, m_hMemBit(nullptr)
+	//, m_hMemDC(nullptr)
+	//, m_hMemBit(nullptr)
 	, m_ptResolution{}
 	, m_arrPen{}
+	, m_pMemTex(nullptr)
 {
 
 }
@@ -24,8 +27,13 @@ CEngine::CEngine()
 CEngine::~CEngine()
 {
 	ReleaseDC(m_hMainWnd, m_hDC);
-	DeleteDC(m_hMemDC);
-	DeleteObject(m_hMemBit);
+	//DeleteDC(m_hMemDC);
+	//DeleteObject(m_hMemBit);
+
+	for (UINT i = 0; i < (UINT)PEN_TYPE::END; ++i)
+	{
+		DeleteObject(m_arrPen[i]);
+	}
 }
 
 void CEngine::CEngineInit(HWND _hWnd, UINT _iWidth, UINT _iHeight)
@@ -42,16 +50,21 @@ void CEngine::CEngineInit(HWND _hWnd, UINT _iWidth, UINT _iHeight)
 	// HDC 초기화
 	m_hDC = GetDC(m_hMainWnd);
 
+	// 백버퍼 용 비트맵 제작
+	m_pMemTex = CResourceMgr::GetInst()->CreateTexture(L"BeckBuffer", m_ptResolution.x, m_ptResolution.y);
+
 	// 자주 사용하는 Pen 및 Brush 생성
 	CreatePenBrush();
 
-	// 별도의 비트맵을 윈도우와 동일한 해상도로 생성시킨다.
-	m_hMemBit = CreateCompatibleBitmap(m_hDC, m_ptResolution.x, m_ptResolution.y);
+	//// 별도의 비트맵을 윈도우와 동일한 해상도로 생성시킨다.
+	//m_hMemBit = CreateCompatibleBitmap(m_hDC, m_ptResolution.x, m_ptResolution.y);
 
 	// 생성시킨 비트맵을 목적지로 하는 DC 를 생성.
-	m_hMemDC = CreateCompatibleDC(m_hDC);
-	HBITMAP hPrevBit = (HBITMAP)SelectObject(m_hMemDC, m_hMemBit);
-	DeleteObject(hPrevBit);
+	//m_hMemDC = CreateCompatibleDC(m_hDC);
+	//HBITMAP hPrevBit = (HBITMAP)SelectObject(m_hMemDC, m_hMemBit);
+	//DeleteObject(hPrevBit);
+
+	// 별도의 비트맵을 만들고 그에 대한 DC 를 생성하는 것은 m_pMemTex 에서 한다.
 
 	// Manager 초기화
 	CPathMgr::GetInst()->PathMgrInit();
@@ -95,14 +108,17 @@ void CEngine::CEngineTick()
 void CEngine::CEngineRender()
 {
 	// 화면 클리어
-	Rectangle(m_hMemDC, -1, -1, m_ptResolution.x + 1, m_ptResolution.y + 1);
+	Rectangle(m_pMemTex->GetDC(), -1, -1, m_ptResolution.x + 1, m_ptResolution.y + 1);
 
 	// 레벨(스테이지) 렌더링
-	CLevelMgr::GetInst()->LevelMgrRender(m_hMemDC);
+	CLevelMgr::GetInst()->LevelMgrRender(m_pMemTex->GetDC());
 	//CLevelMgr::GetInst()->LevelMgrRender(m_hDC);
 
+	// Camera blind
+	CCameraMgr::GetInst()->CameraMgrRender(m_pMemTex->GetDC());
+
 	// MemBitmap -> MainWindowBitmap
-	BitBlt(m_hDC, 0, 0, m_ptResolution.x, m_ptResolution.y, m_hMemDC, 0, 0, SRCCOPY);
+	BitBlt(m_hDC, 0, 0, m_ptResolution.x, m_ptResolution.y, m_pMemTex->GetDC(), 0, 0, SRCCOPY);
 
 	// TimeMgr Rendering
 	CTimeMgr::GetInst()->TimeMgrRender();

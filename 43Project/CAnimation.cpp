@@ -1,4 +1,4 @@
-#include "pch.h"
+ï»¿#include "pch.h"
 #include "CAnimation.h"
 
 #include "CTimeMgr.h"
@@ -96,28 +96,28 @@ void CAnimation::Save(const wstring& _strRelativePath )
 	wstring strFilePath = CPathMgr::GetInst()->GetContentPath();
 	strFilePath += _strRelativePath;
 
-	// ÆÄÀÏ ÀÔÃâ·Â
+	// íŒŒì¼ ì…ì¶œë ¥
 	FILE* pFile = nullptr;
 	errno_t iErrNum = _wfopen_s(&pFile, strFilePath.c_str(), L"wb"); 
-	// ¼º°øÇÏ¸é 0À» ½ÇÆĞÇÏ¸é ±× ÀÌ¿ÜÀÇ Á¤¼ö¸¦ ¹İÈ¯ÇÑ´Ù.
-	// ¼º°øÇÏ´ø ½ÇÆĞÇÏ´ø &pFile ¿¡´Â °ªÀÌ ±â·ÏµÇÁö¸¸ ½ÇÆĞ½Ã¿¡ pFile ¿¡´Â NULL ÀÌ ÀúÀåµÈ´Ù.
+	// ì„±ê³µí•˜ë©´ 0ì„ ì‹¤íŒ¨í•˜ë©´ ê·¸ ì´ì™¸ì˜ ì •ìˆ˜ë¥¼ ë°˜í™˜í•œë‹¤.
+	// ì„±ê³µí•˜ë˜ ì‹¤íŒ¨í•˜ë˜ &pFile ì—ëŠ” ê°’ì´ ê¸°ë¡ë˜ì§€ë§Œ ì‹¤íŒ¨ì‹œì— pFile ì—ëŠ” NULL ì´ ì €ì¥ëœë‹¤.
 	
 	if (nullptr == pFile)
 	{
 		wchar_t szStr[256] = {};
 		wsprintf(szStr, L"Animation Save Fail, Error Number : %d", iErrNum);
-		MessageBox(nullptr, szStr, L"ÆÄÀÏ ÀúÀå ½ÇÆĞ", MB_OK);
+		MessageBox(nullptr, szStr, L"íŒŒì¼ ì €ì¥ ì‹¤íŒ¨", MB_OK);
 		return;
 	}
 
-	// Animation ÀÌ¸§ ÀúÀå
+	// Animation ì´ë¦„ ì €ì¥
 	fwprintf_s(pFile, L"\n");
 
 	fwprintf_s(pFile, L"[ANIMATION_NAME]\n");
 	fwprintf_s(pFile, GetName().c_str());
 	fwprintf_s(pFile, L"\n\n");
 
-	// ¾ÆÆ²¶ó½º ÅØ½ºÃÄ Å°°ª ÀúÀå	
+	// ì•„í‹€ë¼ìŠ¤ í…ìŠ¤ì³ í‚¤ê°’ ì €ì¥	
 	fwprintf_s(pFile, L"[ATLAS_KEY]\n");
 	fwprintf_s(pFile, m_pAtlas->GetKey().c_str());
 	fwprintf_s(pFile, L"\n\n");
@@ -126,13 +126,13 @@ void CAnimation::Save(const wstring& _strRelativePath )
 	fwprintf_s(pFile, m_pAtlas->GetRelativePath().c_str());
 	fwprintf_s(pFile, L"\n\n");
 
-	// ÇÁ·¹ÀÓ Á¤º¸ ÀúÀå
-	wchar_t szNum[50] = {}; // ÇÏ³ªÀÇ ¾Ö´Ï¸ŞÀÌ¼Ç µ¿ÀÛÀÌ 50 ÇÁ·¹ÀÓÀ» ³Ñ±æ °æ¿ì°¡ ¾ø´Ù°í °¡Á¤
+	// í”„ë ˆì„ ì •ë³´ ì €ì¥
+	wchar_t szNum[50] = {}; // í•˜ë‚˜ì˜ ì• ë‹ˆë©”ì´ì…˜ ë™ì‘ì´ 50 í”„ë ˆì„ì„ ë„˜ê¸¸ ê²½ìš°ê°€ ì—†ë‹¤ê³  ê°€ì •
 
 	fwprintf_s(pFile, L"[FRAME_COUNT]\n");
 
 	size_t iFrameCount = m_vecFrame.size();
-	_itow_s((int)iFrameCount, szNum, 50, 10); // Á¤¼ö¸¦ ¹®ÀÚ¿­·Î º¯È¯
+	_itow_s((int)iFrameCount, szNum, 50, 10); // ì •ìˆ˜ë¥¼ ë¬¸ìì—´ë¡œ ë³€í™˜
 
 	fwprintf(pFile, szNum);
 	fwprintf(pFile, L"\n\n");
@@ -168,15 +168,15 @@ void CAnimation::Load(const wstring& _strRelativePath)
 	wstring strFilepath = CPathMgr::GetInst()->GetContentPath();
 	strFilepath += _strRelativePath;
 
-	// ÆÄÀÏ ÀÔÃâ·Â
+	// íŒŒì¼ ì…ì¶œë ¥
 	FILE* pFile = nullptr;
 	errno_t iErrNum = _wfopen_s(&pFile, strFilepath.c_str(), L"rb");
 
 	if (nullptr == pFile)
 	{
 		wchar_t szStr[256] = {};
-		wsprintf(szStr, L"Animation Save ½ÇÆĞ, Error Number : %d", iErrNum);
-		MessageBox(nullptr, szStr, L"ÆÄÀÏ ÀúÀå ½ÇÆĞ", MB_OK);
+		wsprintf(szStr, L"Animation Save ì‹¤íŒ¨, Error Number : %d", iErrNum);
+		MessageBox(nullptr, szStr, L"íŒŒì¼ ì €ì¥ ì‹¤íŒ¨", MB_OK);
 		return;
 	}
 
@@ -189,7 +189,7 @@ void CAnimation::Load(const wstring& _strRelativePath)
 		wchar_t szBuffer[256] = {};
 		fwscanf_s(pFile, L"%s", szBuffer, 256);
 
-		if (!wcscmp(szBuffer, L"[ANIMATION_NAME]")) // szBuffer ¿¡ ÀúÀåµÈ ¹®ÀÚ¿­ÀÌ "[ANIMATION_NAME]" ¶ó¸é
+		if (!wcscmp(szBuffer, L"[ANIMATION_NAME]")) // szBuffer ì— ì €ì¥ëœ ë¬¸ìì—´ì´ "[ANIMATION_NAME]" ë¼ë©´
 		{
 			fwscanf_s(pFile, L"%s", szBuffer, 256);
 			SetName(szBuffer);

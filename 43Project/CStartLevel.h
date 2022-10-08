@@ -5,6 +5,7 @@ class CStartLevel :
 {
 public:
     virtual void LevelInit() override;
+    virtual void LevelTick() override;
 
 public:
     CStartLevel();

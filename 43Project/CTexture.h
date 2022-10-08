@@ -16,9 +16,12 @@ public:
 
 private:
     virtual int Load(const wstring& _strFilePath) override;
+    void Create(UINT _iWidth, UINT _iHeight);
 
 public:
     CTexture();
     ~CTexture();
+
+    friend class CResourceMgr;
 };
 

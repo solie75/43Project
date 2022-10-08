@@ -47,11 +47,31 @@ CTexture* CResourceMgr::LoadTexture(const wstring& _strKey, const wstring& _strR
     // create Texture and Loading
     pTexture = new CTexture;
     pTexture->Load(strFilePath);
-    pTexture->Setkey(_strKey);
+    pTexture->SetKey(_strKey);
     pTexture->SetRelativePath(_strRelativePath);
 
     // map 에 저장
     m_mapTex.insert(make_pair(_strKey, (CTexture*)pTexture));
 
     return (CTexture*)pTexture;
+}
+
+CTexture* CResourceMgr::CreateTexture(const wstring& _strKey, UINT _iWidth, UINT _iHeight)
+{
+    CTexture* pTexture = FindTexture(_strKey);
+
+    if (nullptr != pTexture)
+    {
+        return (CTexture*)pTexture;
+    }
+
+    // 텍스쳐 생성 및 로딩
+    pTexture = new CTexture;
+    pTexture->Create(_iWidth, _iHeight);
+    pTexture->SetKey(_strKey);
+
+    // map 에 저장
+    m_mapTex.insert(make_pair(_strKey, pTexture));
+
+    return pTexture;
 }

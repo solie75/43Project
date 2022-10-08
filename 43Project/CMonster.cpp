@@ -77,8 +77,8 @@ void CMonster::ObjectRender(HDC _dc)
 	tBlend.SourceConstantAlpha = (int)(255.f * fRatio);
 
 	AlphaBlend(_dc
-		, vPos.x - m_pTexture->Width() / 2.f
-		, vPos.y - m_pTexture->Height() / 2.f
+		, (int)(vPos.x - m_pTexture->Width() / 2.f)
+		, (int)(vPos.y - m_pTexture->Height() / 2.f)
 		, m_pTexture->Width()
 		, m_pTexture->Height()
 		, m_pTexture->GetDC()

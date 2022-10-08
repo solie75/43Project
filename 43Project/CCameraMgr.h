@@ -1,5 +1,7 @@
 #pragma once
 
+class CTexture;
+
 struct tCamEffect
 {
 	CAMERA_EFFECT	m_eCurEffect;
@@ -19,6 +21,8 @@ private:
 	list<tCamEffect> m_CamEffectList;
 	float m_fRatio;
 
+	CTexture* m_pBlindTex; // FADE_IN 과 FADE_OUT 에 사용되는 텍스쳐
+
 public:
 	void SetLook(Vec _vLook) { m_vLook = _vLook; }
 	void FadeOut(float _fTerm);
@@ -26,6 +30,7 @@ public:
 
 public:
 	void CameraMgrTick();
+	void CameraMgrRender(HDC _dc);
 
 public:
 	Vec GetRenderPos(Vec _vRealPos)

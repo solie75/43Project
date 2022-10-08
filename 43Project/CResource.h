@@ -13,7 +13,7 @@ public:
     const wstring& GetRelativePath() { return m_strRelativePath; }
 
 private:
-    void Setkey(const wstring& _strKey) { m_strKey = _strKey; }
+    void SetKey(const wstring& _strKey) { m_strKey = _strKey; }
     void SetRelativePath(const wstring& _strRelativepath) { m_strRelativePath = _strRelativepath; }
 
 protected:

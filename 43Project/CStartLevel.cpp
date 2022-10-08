@@ -9,6 +9,7 @@
 #include "CCameraMgr.h"
 #include "CResourceMgr.h"
 #include "CCollisionMgr.h"
+#include "CKeyMgr.h"
 
 CStartLevel::CStartLevel()
 {
@@ -49,5 +50,16 @@ void CStartLevel::LevelInit()
 	
 	Vec vResolution = CEngine::GetInst()->GetResolution();
 	CCameraMgr::GetInst()->SetLook(vResolution / 2.f);
+}
+
+void CStartLevel::LevelTick()
+{
+	CLevel::LevelTick();
+
+	if (IsTap(KEY::ENTER))
+	{
+		CCameraMgr::GetInst()->FadeOut(1.f);
+		CCameraMgr::GetInst()->FadeIn(1.f);
+	}
 }
 
