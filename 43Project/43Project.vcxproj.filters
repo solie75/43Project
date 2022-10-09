@@ -88,6 +88,9 @@
     <Filter Include="Game\05.Component\Animator\Animation">
       <UniqueIdentifier>{0a43fecf-be36-4286-8e11-d156e67d77ad}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Game\05.Component\RigidBody">
+      <UniqueIdentifier>{e1cee869-6dff-4971-9cea-c711b4bd5fa6}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -186,6 +189,9 @@
     <ClInclude Include="CAnimator.h">
       <Filter>Game\05.Component\Animator</Filter>
     </ClInclude>
+    <ClInclude Include="CRigidBody.h">
+      <Filter>Game\05.Component\RigidBody</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="43Project.rc">
@@ -279,6 +285,9 @@
     </ClCompile>
     <ClCompile Include="CAnimation.cpp">
       <Filter>Game\05.Component\Animator\Animation</Filter>
+    </ClCompile>
+    <ClCompile Include="CRigidBody.cpp">
+      <Filter>Game\05.Component\RigidBody</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

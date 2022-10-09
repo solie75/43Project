@@ -155,6 +155,7 @@
     <ClInclude Include="CPlayer.h" />
     <ClInclude Include="CResource.h" />
     <ClInclude Include="CResourceMgr.h" />
+    <ClInclude Include="CRigidBody.h" />
     <ClInclude Include="CSound.h" />
     <ClInclude Include="CStage01Level.h" />
     <ClInclude Include="CStartLevel.h" />
@@ -189,6 +190,7 @@
     <ClCompile Include="CPlayer.cpp" />
     <ClCompile Include="CResource.cpp" />
     <ClCompile Include="CResourceMgr.cpp" />
+    <ClCompile Include="CRigidBody.cpp" />
     <ClCompile Include="CSound.cpp" />
     <ClCompile Include="CStage01Level.cpp" />
     <ClCompile Include="CStartLevel.cpp" />
