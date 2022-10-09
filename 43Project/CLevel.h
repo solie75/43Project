@@ -13,6 +13,7 @@ private:
 public:
     virtual void LevelInit() = 0;
     virtual void LevelTick();
+    virtual void Final_Tick();
     virtual void LevelRender(HDC _dc);
 
 public:

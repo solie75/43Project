@@ -11,6 +11,7 @@ private:
 
 public:
     virtual void ComponentTick() = 0;
+    virtual void Final_Tick() {};
     virtual void ComponentRender(HDC _dc) = 0;
 
 public:

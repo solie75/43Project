@@ -29,6 +29,17 @@ void CLevel::LevelTick()
 	}
 }
 
+void CLevel::Final_Tick()
+{
+	for (size_t i = 0; i < (UINT)LAYER::END; ++i)
+	{
+		for (size_t ii = 0; ii < m_arrLayer[i].size(); ++ii)
+		{
+			m_arrLayer[i][ii]->Final_Tick();
+		}
+	}
+}
+
 void CLevel::LevelRender(HDC _dc)
 {
 	/*for (size_t i = 0; i < (UINT)LAYER::END; ++i)

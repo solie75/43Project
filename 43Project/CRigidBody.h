@@ -16,6 +16,7 @@ private:
 
 public:
     virtual void ComponentTick() override;
+    virtual void Final_Tick() override;
     virtual void ComponentRender(HDC _dc) override;
 
 public:
@@ -25,7 +26,7 @@ public:
     Vec GetVelocity() { return m_vVelocity; }
     void SetFriction(float _fFriction) { m_fFriction = _fFriction; }
     void SetFrictionScale(float _fFrictionScale) { m_fFrictionScale = _fFrictionScale; }
-
+     
 public:
     CRigidBody(CObject* _pOwner);
     virtual ~CRigidBody();

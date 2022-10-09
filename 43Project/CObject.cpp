@@ -5,6 +5,7 @@
 
 #include "CCollider.h"
 #include "CAnimator.h"
+#include "CRigidBody.h"
 
 
 CObject::CObject()
@@ -12,6 +13,7 @@ CObject::CObject()
 	, m_vScale{}
 	, m_pCollider(nullptr)
 	, m_pAnimator(nullptr)
+	, m_pRigidBody(nullptr)
 	, m_bDead(false)
 {
 }
@@ -19,6 +21,8 @@ CObject::CObject()
 CObject::~CObject()
 {
 	DEL(m_pCollider);
+	DEL(m_pAnimator);
+	DEL(m_pRigidBody);
 }
 
 
@@ -32,6 +36,26 @@ void CObject::ObjectTick()
 	{
 		m_pAnimator->ComponentTick();
 	}
+	if (nullptr != m_pRigidBody)
+	{
+		m_pRigidBody->ComponentTick();
+	}
+}
+
+void CObject::Final_Tick()
+{
+	if (nullptr != m_pCollider)
+	{
+		m_pCollider->Final_Tick();
+	}
+	if (nullptr != m_pAnimator)
+	{
+		m_pAnimator->Final_Tick();
+	}
+	if (nullptr != m_pRigidBody)
+	{
+		m_pRigidBody->Final_Tick();
+	}
 }
 
 void CObject::ObjectRender(HDC _dc)
@@ -44,6 +68,10 @@ void CObject::ObjectRender(HDC _dc)
 	{
 		m_pAnimator->ComponentRender(_dc);
 	}
+	if (nullptr != m_pRigidBody)
+	{
+		m_pRigidBody->ComponentRender(_dc);
+	}
 }
 
 void CObject::CreateCollider()
@@ -54,6 +82,11 @@ void CObject::CreateCollider()
 void CObject::CreateAnimator()
 {
 	m_pAnimator = new CAnimator(this);
+}
+
+void CObject::CreateRigidBody()
+{
+	m_pRigidBody = new CRigidBody(this);
 }
 
 void CObject::SetDead()

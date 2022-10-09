@@ -74,7 +74,8 @@ void CMonster::ObjectRender(HDC _dc)
 	tBlend.AlphaFormat = AC_SRC_ALPHA;
 	tBlend.BlendFlags = 0;
 	tBlend.BlendOp = AC_SRC_OVER;
-	tBlend.SourceConstantAlpha = (int)(255.f * fRatio);
+	//tBlend.SourceConstantAlpha = (int)(255.f * fRatio);
+	tBlend.SourceConstantAlpha = (int)255.f;
 
 	AlphaBlend(_dc
 		, (int)(vPos.x - m_pTexture->Width() / 2.f)

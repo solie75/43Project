@@ -3,6 +3,7 @@
 
 class CCollider;
 class CAnimator;
+class CRigidBody;
 
 class CObject :
 	public CEntity
@@ -13,6 +14,7 @@ private:
 
 	CCollider* m_pCollider;
 	CAnimator* m_pAnimator;
+	CRigidBody* m_pRigidBody;
 
 	bool m_bDead;
 
@@ -25,14 +27,16 @@ public:
 
 	void CreateCollider();
 	void CreateAnimator();
+	void CreateRigidBody();
 
 	CCollider* GetCollider() { return m_pCollider; }
 	CAnimator* GetAnimator() { return m_pAnimator; }
+	CRigidBody* GetRigidBody() { return m_pRigidBody; }
 
 public:
 	virtual void ObjectTick();
+	virtual void Final_Tick() final;
 	virtual void ObjectRender(HDC _hdc);
-
 	virtual void CollisionBegin(CCollider* _pOther) {} // BeginOverlap
 	virtual void Colliding(CCollider* _pOther) {} // OnOverlap
 	virtual void CollisionEnd(CCollider* _pOther) {} // EndOverlap

@@ -11,14 +11,18 @@
 #include "CMissile.h"
 #include "CCollider.h"
 #include "CAnimator.h"
+#include "CRigidBody.h"
 #include "CAnimation.h"
 #include "CResourceMgr.h"
 
 CPlayer::CPlayer()
 	: m_fSpeed(100.f)
-	, m_pTexture(nullptr)
+	//, m_pTexture(nullptr)
 {
 	CreateCollider();
+	CreateAnimator();
+	CreateRigidBody();
+
 	GetCollider()->SetOffsetPos(Vec(0.f, 0.f));
 	GetCollider()->SetScale(Vec(80.f, 80.f));
 
@@ -26,7 +30,7 @@ CPlayer::CPlayer()
 	//m_pTexture = CResourceMgr::GetInst()->LoadTexture(L"PlayerImage", L"texture\\Fighter.bmp");
 	
 	// Animator에서 사용할 Image 로딩 (120, 130)
-	CreateAnimator();
+
 	CTexture* pLinkTex = CResourceMgr::GetInst()->LoadTexture(L"LINK", L"\\texture\\link.bmp");
 
 	//GetAnimator()->CreateAnimation(L"WALK_DOWN", pLinkTex, Vec(0.f, 520.f), Vec(120.f, 130.f), 10, 0.1f);
@@ -43,6 +47,10 @@ CPlayer::CPlayer()
 	GetAnimator()->LoadAnimation(L"animation\\WALK_LEFT.anim");
 	GetAnimator()->LoadAnimation(L"animation\\WALK_UP.anim");
 	GetAnimator()->LoadAnimation(L"animation\\WALK_RIGHT.anim");
+
+	// RigidBody 설정
+	GetRigidBody()->SetFriction(100.f);
+	GetRigidBody()->SetVelocityLimit(200.f);
 }
 
 CPlayer::~CPlayer()
@@ -51,27 +59,32 @@ CPlayer::~CPlayer()
 
 void CPlayer::ObjectTick()
 {
-	Vec vPos = GetPos();
-
+	//Vec vPos = GetPos();
 	if (IsPressed(KEY::LEFT))
 	{
-		vPos.x -= m_fSpeed * DT;
+		//vPos.x -= m_fSpeed * DT;
+		GetRigidBody()->AddForce(Vec(-300.f, 0.f));
 	}
 
 	if (IsPressed(KEY::RIGHT))
 	{
-		vPos.x += m_fSpeed * DT;
+		//vPos.x += m_fSpeed * DT;
+		GetRigidBody()->AddForce(Vec(300.f, 0.f));
 	}
 
 	if (IsPressed(KEY::UP))
 	{
-		vPos.y -= m_fSpeed * DT;
+		//vPos.y -= m_fSpeed * DT;
+		GetRigidBody()->AddForce(Vec(0.f, -300.f));
 	}
 
 	if (IsPressed(KEY::DOWN))
 	{
-		vPos.y += m_fSpeed * DT;
+		//vPos.y += m_fSpeed * DT;
+		GetRigidBody()->AddForce(Vec(0.f, 300.f));
 	}
+
+
 
 	if (IsTap(KEY::LEFT))
 	{
@@ -115,7 +128,7 @@ void CPlayer::ObjectTick()
 			Instantiate(pMissile, GetPos(), LAYER::PLAYER_PROJECTILE);
 		}
 	}
-	SetPos(vPos);
+	//SetPos(vPos);
 
 	// 여기에서 상위 객체 클래스의 Tick  재호출 Collider 를 위해서
 	CObject::ObjectTick();

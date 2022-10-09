@@ -30,6 +30,7 @@ void CLevelMgr::LevelMgrInit()
 void CLevelMgr::LevelMgrTick()
 {
 	m_pCurLevel->LevelTick();
+	m_pCurLevel->Final_Tick();
 }
 
 void CLevelMgr::LevelMgrRender(HDC _dc)

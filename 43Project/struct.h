@@ -28,37 +28,16 @@ public:
 	{
 		return Vec(x + _vOther.x, y + _vOther.y);
 	}
-	
-	Vec operator - (Vec _vOther)
-	{
-		return Vec(x - _vOther.x, y - _vOther.y);
-	}
 
 	void operator += (Vec _vOther)
 	{
 		x += _vOther.x;
 		y += _vOther.y;
 	}
-
-	Vec operator * (float _f)
-	{
-		return Vec(x * _f, y * _f);
-	}
-
-	Vec operator *= (float _f)
-	{
-		return Vec(x * _f, y * _f);
-	}
-
-
-	Vec operator / (float _f)
-	{
-		return Vec(x / _f, y / _f);
-	}
 	
-	Vec operator -()
+	Vec operator - (Vec _vOther)
 	{
-		return Vec(-x, -y);
+		return Vec(x - _vOther.x, y - _vOther.y);
 	}
 
 	void operator -= (Vec _vOther)
@@ -67,11 +46,48 @@ public:
 		y -= _vOther.y;
 	}
 
+	Vec operator -()
+	{
+		return Vec(-x, -y);
+	}
+
+	Vec operator / (float _f)
+	{
+		return Vec(x / _f, y / _f);
+	}
+
 	void operator /= (float _f)
 	{
 		x /= _f;
 		y /= _f;
 	}
+
+	Vec operator / (Vec _vOther)
+	{
+		return Vec(x / _vOther.x, y / _vOther.y);
+	}
+
+	void operator /= (Vec _vOther)
+	{
+		x /= _vOther.x;
+		y /= _vOther.y;
+	}
+
+	Vec operator * (Vec _vOther)
+	{
+		return Vec(x * _vOther.x, y * _vOther.y);
+	}
+
+	Vec operator * (float _f)
+	{
+		return Vec(x * _f, y * _f);
+	}
+
+	void operator *= (float _f)
+	{
+		x *= _f, y *= _f;
+	}
+
 
 public:
 	Vec()

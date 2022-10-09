@@ -8,7 +8,7 @@ class CPlayer :
 {
 private:
     float m_fSpeed;
-    CTexture* m_pTexture;
+    //CTexture* m_pTexture;
 
 public:
     virtual void ObjectTick() override;
