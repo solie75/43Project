@@ -162,6 +162,7 @@
     <ClInclude Include="CTexture.h" />
     <ClInclude Include="CTimeMgr.h" />
     <ClInclude Include="def.h" />
+    <ClInclude Include="CForce.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="func.h" />
     <ClInclude Include="pch.h" />
@@ -196,6 +197,7 @@
     <ClCompile Include="CStartLevel.cpp" />
     <ClCompile Include="CTexture.cpp" />
     <ClCompile Include="CTimeMgr.cpp" />
+    <ClCompile Include="CForce.cpp" />
     <ClCompile Include="func.cpp" />
     <ClCompile Include="pch.cpp" />
   </ItemGroup>

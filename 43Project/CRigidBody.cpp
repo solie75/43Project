@@ -34,7 +34,7 @@ void CRigidBody::Final_Tick()
 	if (!vFriction.IsZero()) // 하나의 주어진 값에 대해서 주건문 을 struct.h 에 선언해둔 경우이다.
 		// 마찰가속도가 0이 아닌 경우
 	{
-		vFriction.Normalize(); // 여기에서 정규화를 하는 이유는?
+		vFriction.Normalize(); // 여기에서 정규화를 하는 이유는? 방향!
 		vFriction *= (m_fFriction * m_fFrictionScale * m_fMass * DT); // 내가 이걸 생각할 수 있었을 까
 	}
 	// 현재 속도 반대 방향으로 마찰에 의한 속도 감속

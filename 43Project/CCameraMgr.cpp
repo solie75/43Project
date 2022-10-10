@@ -34,7 +34,7 @@ void CCameraMgr::CameraMgrTick()
 	Vec vResolution = CEngine::GetInst()->GetResolution();
 	vResolution /= 2.f;
 	m_vDiff = m_vLook - vResolution;
-
+	 
 	if (m_CamEffectList.empty())
 	{
 		return;
