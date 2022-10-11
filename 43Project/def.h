@@ -20,6 +20,7 @@
 #define IsTap(key) CKeyMgr::GetInst()->GetKeyState(key) == KEY_STATE::TAP
 #define IsPressed(key) CKeyMgr::GetInst()->GetKeyState(key) == KEY_STATE::PRESSED
 #define IsRelease(key) CKeyMgr::GetInst()->GetKeyState(key) == KEY_STATE::RELEASE
+#define MOUSE_POS CKeyMgr::GetInst()->GetMousePos()
 
 enum class LEVEL_TYPE
 {
@@ -49,6 +50,7 @@ enum class LAYER
 	MONSTER,
 	PLAYER_PROJECTILE,
 	MONSTER_PROJECTILE,
+	FORCE,
 
 
 

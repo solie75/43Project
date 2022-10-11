@@ -44,7 +44,7 @@ public:
 public:
 	bool IsDead() { return m_bDead; }
 	void SetDead();
-	void Instantiate(CObject* _pNewObj, Vec _vPos, LAYER _eLayer);
+	//void Instantiate(CObject* _pNewObj, Vec _vPos, LAYER _eLayer);
 
 public:
 	CObject();

@@ -5,6 +5,7 @@
 #include "CObject.h"
 #include "CPlayer.h"
 #include "CMonster.h"
+#include "CForce.h"
 
 #include "CCameraMgr.h"
 #include "CResourceMgr.h"
@@ -60,6 +61,18 @@ void CStartLevel::LevelTick()
 	{
 		CCameraMgr::GetInst()->FadeOut(1.f);
 		CCameraMgr::GetInst()->FadeIn(1.f);
+	}
+
+	if (IsTap(KEY::LBTN))
+	{
+		CForce* pForce = new CForce;
+		pForce->SetDuration(1.5f);
+		pForce->SetForceScale(200.f);
+		pForce->SetForceRadius(500.f);
+
+		Vec vMousePos = MOUSE_POS;
+		vMousePos = CCameraMgr::GetInst()->GetRealPos(vMousePos);
+		Instantiate(pForce, vMousePos, LAYER::FORCE);
 	}
 }
 

@@ -54,6 +54,7 @@ class CKeyMgr
 
 private:
 	vector<tKeyInfo> m_vecKey;
+	Vec m_vMousePos;
 
 public:
 	void KeyMgrInit();
@@ -64,5 +65,6 @@ public:
 	{
 		return m_vecKey[(UINT)_key].state;
 	}
+	Vec GetMousePos() { return m_vMousePos; }
 };
 

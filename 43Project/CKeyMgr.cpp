@@ -1,5 +1,6 @@
 #include "pch.h"
 #include "CKeyMgr.h"
+#include "CEngine.h"
 
 int g_arrVK[(UINT)KEY::END]
 =
@@ -79,6 +80,12 @@ void CKeyMgr::KeyMgrTick()
 				}
 			}
 		}
+
+		// Mouse 위치 갱신
+		POINT ptMousePos = {};
+		GetCursorPos(&ptMousePos);
+		ScreenToClient(CEngine::GetInst()->GetMainWnd(), &ptMousePos);
+		m_vMousePos = ptMousePos;
 	}
 	// 윈도우가 포커스 상태가 아닌 경우
 	else
