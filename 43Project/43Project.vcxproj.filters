@@ -100,6 +100,9 @@
     <Filter Include="Game\03.Level\03.Editor">
       <UniqueIdentifier>{0a6756f7-f039-493e-a04a-47956a3e97c9}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Game\04.Object\Tile">
+      <UniqueIdentifier>{de0692b5-4948-4eeb-b401-8a7b99dcf0b1}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -210,6 +213,9 @@
     <ClInclude Include="CEditorLevel.h">
       <Filter>Game\03.Level\03.Editor</Filter>
     </ClInclude>
+    <ClInclude Include="CTile.h">
+      <Filter>Game\04.Object\Tile</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="43Project.rc">
@@ -315,6 +321,9 @@
     </ClCompile>
     <ClCompile Include="CEditorLevel.cpp">
       <Filter>Game\03.Level\03.Editor</Filter>
+    </ClCompile>
+    <ClCompile Include="CTile.cpp">
+      <Filter>Game\04.Object\Tile</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

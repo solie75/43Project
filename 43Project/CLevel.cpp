@@ -1,6 +1,7 @@
 #include "pch.h"
 #include "CLevel.h"
 #include "CObject.h"
+#include "CTile.h"
 
 CLevel::CLevel()
 {
@@ -84,5 +85,35 @@ void CLevel::DeleteAllObject()
 
 		// 동적할당 해지시킨 주소값들을 벡터 내에서 비우기
 		m_arrLayer[i].clear();
+	}
+}
+
+void CLevel::DeleteObject(LAYER _eLayer)
+// 특정 레이어의 모든 객체를 삭제한다.
+{
+	for (size_t i = 0; i < m_arrLayer[(UINT)_eLayer].size(); ++i)
+	{
+		delete m_arrLayer[(UINT)_eLayer][i];
+	}
+	m_arrLayer[(UINT)_eLayer].clear();
+}
+
+void CLevel::CreateTile(UINT _X, UINT _Y)
+{
+	// 기존에 깔아 둔 타일 제거
+	DeleteObject(LAYER::TILE);
+
+	m_iTileXCount = _X;
+	m_iTileYCount = _Y;
+
+	// 지정된 가로 세로 숫자에 맞추어 타일 배치
+	for (UINT iRow = 0; iRow < m_iTileXCount; ++iRow)
+	{
+		for (UINT iCol = 0; iCol < m_iTileYCount; ++iCol)
+		{
+			CTile* pTile = new CTile;
+			pTile->SetPos(Vec((float)(TILE_SIZE * iCol), (float)(TILE_SIZE * iRow)));
+			AddObject(pTile, LAYER::TILE);
+		}
 	}
 }

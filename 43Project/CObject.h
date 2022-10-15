@@ -1,5 +1,6 @@
 #pragma once
 #include "CEntity.h"
+#include "CCameraMgr.h"
 
 class CCollider;
 class CAnimator;

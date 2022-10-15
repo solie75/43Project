@@ -10,6 +10,13 @@ class CLevel :
 private:
     vector<CObject*> m_arrLayer[(UINT)LAYER::END];
 
+    UINT m_iTileXCount;
+    UINT m_iTileYCount;
+
+public:
+    UINT GetTileXCount() { return m_iTileXCount; }
+    UINT GetdRileYCount() { return m_iTileYCount; }
+
 public:
     virtual void LevelInit() = 0;
     virtual void LevelTick();
@@ -30,6 +37,9 @@ public:
     const vector<CObject*>& GetLayer(LAYER _layer) { return m_arrLayer[(UINT)_layer];}
 
     void DeleteAllObject();
+
+    void DeleteObject(LAYER _eLayer);
+    void CreateTile(UINT _X, UINT _Y);
 
 public:
     CLONE_DEACTIVATE(CLevel);

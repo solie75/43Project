@@ -25,6 +25,8 @@
 #define CLONE(type) virtual type* Clone() {return new type(*this);}
 #define CLONE_DEACTIVATE(type) virtual type* Clone() { assert(nullptr); return nullptr;}
 
+#define TILE_SIZE 64
+
 enum class LEVEL_TYPE
 {
 	START,

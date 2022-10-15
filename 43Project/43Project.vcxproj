@@ -162,6 +162,7 @@
     <ClInclude Include="CStage01Level.h" />
     <ClInclude Include="CStartLevel.h" />
     <ClInclude Include="CTexture.h" />
+    <ClInclude Include="CTile.h" />
     <ClInclude Include="CTimeMgr.h" />
     <ClInclude Include="def.h" />
     <ClInclude Include="CForce.h" />
@@ -200,6 +201,7 @@
     <ClCompile Include="CStage01Level.cpp" />
     <ClCompile Include="CStartLevel.cpp" />
     <ClCompile Include="CTexture.cpp" />
+    <ClCompile Include="CTile.cpp" />
     <ClCompile Include="CTimeMgr.cpp" />
     <ClCompile Include="CForce.cpp" />
     <ClCompile Include="func.cpp" />
