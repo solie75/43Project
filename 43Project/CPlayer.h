@@ -25,7 +25,11 @@ public:
     }
 
 public:
+    CLONE(CPlayer);
+
+public:
     CPlayer();
+    CPlayer(const CPlayer& _other);
     virtual ~CPlayer();
 };
 

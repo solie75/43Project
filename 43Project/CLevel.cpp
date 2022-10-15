@@ -68,3 +68,21 @@ void CLevel::LevelRender(HDC _dc)
 	}
 }
 
+void CLevel::DeleteAllObject()
+{
+	for (UINT i = 0; i < (UINT)LAYER::END; ++i)
+	{
+		for (UINT j = 0; j < m_arrLayer[i].size(); ++j)
+		{
+			if (m_arrLayer[i][j]->IsDead())
+			{
+				continue;
+			}
+
+			DEL(m_arrLayer[i][j]);
+		}
+
+		// 동적할당 해지시킨 주소값들을 벡터 내에서 비우기
+		m_arrLayer[i].clear();
+	}
+}

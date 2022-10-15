@@ -20,6 +20,9 @@ protected:
     virtual int Load(const wstring& _strFilePath) = 0;
 
 public:
+    CLONE_DEACTIVATE(CResource);
+
+public:
     CResource();
     virtual ~CResource();
 

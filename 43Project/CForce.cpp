@@ -22,7 +22,7 @@ CForce::~CForce()
 {
 }
 
-void CForce::CForceTick()
+void CForce::ObjectTick()
 {
 	m_fAccTime += DT;
 
@@ -47,28 +47,28 @@ void CForce::CForceTick()
 		Vec vForceDir = vecPlayerLayer[i]->GetPos() - GetPos();
 
 		// Force 와 Player사이의 거리
-		//float fDistance = vForceDir.ShiftingDistance();
+		float fDistance = vForceDir.ShiftingDistance();
 
 		//float fRatio = 1.f - (fDistance / m_fRadius)
 		//Saturate(fRatio); // 0 에서 1 사이 보정 .../
-		//float fRatio = cosf((fDistance / m_fForceRadius) * PI * 0.5f);
-		// 객체와 힘과의 거리는 반경의 몇배인가.
-		//Saturate(fRatio);
-		// 강의 참고
+		float fRatio = cosf((fDistance / m_fForceRadius) * PI * 0.5f);
+		// 현재 거리에 반경을 나누면 반경에 대하여 거리가 몇퍼센트인지에 대한 비율이 나온다 예를 들어 반경이 100이고 거리가 70이면 비율은 70인것이다.
+		 //객체와 힘과의 거리는 반경의 몇배인가.
+		Saturate(fRatio);
+		// 힘의 객체와 플레이어 객체 사이의 거리와 힘 객체의 반경 의 비율은 0이상 1이하여야 한다.
+		// 1을 초과 한다면 임이 -가 되어서 오히려 빨아들이는 것이 되기 때문이다.
 
 		//Force 에서 플레이어에게 줄 힘의 크기
 		vForceDir.Normalize();
-		//vForceDir *= m_fForceScale * fRatio;
-
-
-		vForceDir *= m_fForceScale;
+		vForceDir *= m_fForceScale * fRatio;
+		// 힘객체가 가지고 있는 힘에 비율을 곱해서 힘 객체와 플레이어 객체가 거리가 멀면 힘을 덜 받고 가까우면 힘을 온전히 받게끔 해주어야 한다.
 
 		vecPlayerLayer[i]->GetRigidBody()->AddForce(vForceDir);
 	}
 
 }
 
-void CForce::CForceRender(HDC _dc)
+void CForce::ObjectRender(HDC _dc)
 {
 	HPEN hGreenPen = CEngine::GetInst()->GetPen(PEN_TYPE::GREEN);
 	HBRUSH hNullBrush = (HBRUSH)GetStockObject(NULL_BRUSH);

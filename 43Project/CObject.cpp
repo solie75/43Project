@@ -18,6 +18,32 @@ CObject::CObject()
 {
 }
 
+CObject::CObject(const CObject& _other)
+	: CEntity(_other)
+	, m_vPos()
+	, m_vScale{}
+	, m_pCollider(nullptr)
+	, m_pAnimator(nullptr)
+	, m_pRigidBody(nullptr)
+	, m_bDead(false)
+{
+	if (nullptr != _other.m_pCollider)
+	{
+		m_pCollider = _other.m_pCollider->Clone();
+		m_pCollider->SetOwner(this);
+	}
+	if (nullptr != _other.m_pAnimator)
+	{
+		m_pAnimator = _other.m_pAnimator->Clone();
+		m_pAnimator->SetOwner(this);
+	}
+	if (nullptr != _other.m_pRigidBody)
+	{
+		m_pRigidBody = _other.m_pRigidBody->Clone();
+		m_pRigidBody->SetOwner(this);
+	}
+}
+
 CObject::~CObject()
 {
 	DEL(m_pCollider);

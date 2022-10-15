@@ -4,11 +4,33 @@
 #include "CAnimation.h"
 
 CAnimator::CAnimator(CObject* _pOwner)
-	: CComponent(_pOwner) // ...? 이걸 모르겠네...
+	: CComponent(_pOwner)
 	, m_mapAnim {}
 	, m_pCurAnim(nullptr)
 	, m_bRepeat(false)
 {
+}
+
+CAnimator::CAnimator(const CAnimator& _other)
+	: CComponent(_other) // 여기는 CObject* 가 들어가야하는 자리인데 차라리 nullptr 이 들어가야 하는거 아닌가.
+	, m_mapAnim{}
+	, m_pCurAnim(_other.m_pCurAnim)
+	, m_bRepeat(_other.m_bRepeat)
+{
+	map<wstring, CAnimation*>::const_iterator iter = _other.m_mapAnim.begin();
+	for (; iter != _other.m_mapAnim.end(); ++iter)
+	{
+		CAnimation* pAnim = iter->second->Clone();
+		pAnim->Reset();
+		pAnim->m_pAnimator = this;
+		m_mapAnim.insert(make_pair(iter->first, pAnim));
+	}
+
+	// 같은 애니메이션을 재생
+	if (nullptr != m_pCurAnim)
+	{
+		Play(_other.m_pCurAnim->GetName(), m_bRepeat);
+	}
 }
 
 CAnimator::~CAnimator()

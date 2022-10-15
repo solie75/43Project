@@ -22,6 +22,8 @@ public:
 
     virtual void CollisionBegin(CCollider* _pOther) override;
 
+    CLONE(CMissile);
+
 public:
     CMissile();
     ~CMissile();

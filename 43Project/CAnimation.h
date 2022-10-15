@@ -8,7 +8,7 @@ class CAnimation :
     public CEntity
 {
 private:
-    CAnimator* const    m_pAnimator;
+    CAnimator*          m_pAnimator;
     vector<tAnimFrame>  m_vecFrame;
     CTexture*           m_pAtlas;
     int                 m_iCurFrame;
@@ -39,6 +39,9 @@ public:
 
     void Save(const wstring& _strRelativePath); // 상대 경로로 저장과 불러오기를 한다.
     void Load(const wstring& _strRelativePath);
+
+public:
+    CLONE(CAnimation);
 
 public:
     CAnimation(CAnimator* _pAnimator);

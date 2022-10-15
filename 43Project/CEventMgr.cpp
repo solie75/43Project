@@ -47,6 +47,15 @@ void CEventMgr::EventMgrTick()
 			}
 		}
 			break;
+		case EVENT_TYPE::LEVEL_CHANGE:
+		{
+			// wParam : Next Level Type
+			LEVEL_TYPE eNextLevel = (LEVEL_TYPE)m_vecEvent[i].wPARAM;
+			CLevelMgr::GetInst()->ChangeLevel(eNextLevel);
+		}
+			break;
+		default:
+			break;
 		}
 	}
 

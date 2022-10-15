@@ -16,8 +16,10 @@ public:
     void SetForceRadius(float _fRadius) { m_fForceRadius = _fRadius; }
 
 public:
-    void CForceTick();
-    void CForceRender(HDC _dc); // 왜 override 가 없을 까
+    void ObjectTick();
+    void ObjectRender(HDC _dc); // 왜 override 가 없을 까
+
+    CLONE(CForce);
 
 public:
     CForce();

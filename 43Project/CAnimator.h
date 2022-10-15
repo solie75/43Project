@@ -24,7 +24,11 @@ public:
     CAnimation* LoadAnimation(const wstring& _strRelativePath);
 
 public:
+    CLONE(CAnimator);
+
+public:
     CAnimator(CObject* _pOwner);
+    CAnimator(const CAnimator& _other);
     virtual ~CAnimator();
 };
 

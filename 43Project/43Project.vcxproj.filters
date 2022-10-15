@@ -94,6 +94,12 @@
     <Filter Include="Game\04.Object\Force">
       <UniqueIdentifier>{8814b596-5a8c-4fa7-8918-7074863990d8}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Game\04.Object\GroundPlatform">
+      <UniqueIdentifier>{be0f053a-c8dd-4728-beab-223b95cfc45d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\03.Level\03.Editor">
+      <UniqueIdentifier>{0a6756f7-f039-493e-a04a-47956a3e97c9}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -198,6 +204,12 @@
     <ClInclude Include="CForce.h">
       <Filter>Game\04.Object\Force</Filter>
     </ClInclude>
+    <ClInclude Include="CGroundPlatform.h">
+      <Filter>Game\04.Object\GroundPlatform</Filter>
+    </ClInclude>
+    <ClInclude Include="CEditorLevel.h">
+      <Filter>Game\03.Level\03.Editor</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="43Project.rc">
@@ -297,6 +309,12 @@
     </ClCompile>
     <ClCompile Include="CForce.cpp">
       <Filter>Game\04.Object\Force</Filter>
+    </ClCompile>
+    <ClCompile Include="CGroundPlatform.cpp">
+      <Filter>Game\04.Object\GroundPlatform</Filter>
+    </ClCompile>
+    <ClCompile Include="CEditorLevel.cpp">
+      <Filter>Game\03.Level\03.Editor</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

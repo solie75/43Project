@@ -14,6 +14,14 @@ CCollider::CCollider(CObject* _pOwner)
 {
 }
 
+CCollider::CCollider(const CCollider& _other)
+	: CComponent(nullptr)
+	, m_vOffsetPos(_other.m_vOffsetPos)
+	, m_vScale(_other.m_vScale)
+	, m_iOverlapCount(0)
+{
+}
+
 CCollider::~CCollider()
 {
 }

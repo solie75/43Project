@@ -22,12 +22,16 @@
 #define IsRelease(key) CKeyMgr::GetInst()->GetKeyState(key) == KEY_STATE::RELEASE
 #define MOUSE_POS CKeyMgr::GetInst()->GetMousePos()
 
+#define CLONE(type) virtual type* Clone() {return new type(*this);}
+#define CLONE_DEACTIVATE(type) virtual type* Clone() { assert(nullptr); return nullptr;}
+
 enum class LEVEL_TYPE
 {
 	START,
 	STAGE_01,
 	STAGE_02,
 	STAGE_03,
+	EDITOR,
 
 	END,
 };
@@ -51,6 +55,7 @@ enum class LAYER
 	PLAYER_PROJECTILE,
 	MONSTER_PROJECTILE,
 	FORCE,
+	GROUNDPLATFORM,
 
 
 

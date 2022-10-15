@@ -29,7 +29,11 @@ public:
     void OnOverlap(CCollider* _other);
 
 public:
+    CLONE(CCollider);
+
+public:
     CCollider(CObject* _pOwner);
+    CCollider(const CCollider& _other);
     ~CCollider();
 };
 

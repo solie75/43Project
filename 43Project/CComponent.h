@@ -7,7 +7,7 @@ class CComponent :
     public CEntity
 {
 private:
-    CObject* const m_pOwner;
+    CObject* m_pOwner;
 
 public:
     virtual void ComponentTick() = 0;
@@ -17,8 +17,13 @@ public:
 public:
     CObject* GetOwner() { return m_pOwner; }
 
+private:
+    void SetOwner(CObject* _pOwner) { m_pOwner = _pOwner; }
+
 public:
     CComponent(CObject* _pOwner);
     ~CComponent();
+
+    friend class CObject;
 };
 

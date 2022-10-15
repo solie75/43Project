@@ -40,3 +40,11 @@ void Saturate(float& _float)
 		_float = 0.f;
 	}
 }
+
+void ChangeLevel(LEVEL_TYPE _eNextLevel)
+{
+	tEvent _event = {};
+	_event.eType = EVENT_TYPE::LEVEL_CHANGE;
+	_event.wPARAM = (DWORD_PTR)_eNextLevel;
+	CEventMgr::GetInst()->AddEvent(_event);
+}

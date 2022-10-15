@@ -5,7 +5,10 @@ class CStage01Level :
 {
 public:
     virtual void LevelInit() override;
+    virtual void LevelTick() override;
 
+    virtual void LevelEnter() override;
+    virtual void LevelExit() override;
 public:
     CStage01Level();
     ~CStage01Level();

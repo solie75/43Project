@@ -24,6 +24,9 @@ public:
     }
 
 public:
+    CLONE(CMonster);
+
+public:
     CMonster();
     ~CMonster();
 };

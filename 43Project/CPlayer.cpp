@@ -51,6 +51,17 @@ CPlayer::CPlayer()
 	// RigidBody 설정
 	GetRigidBody()->SetFriction(100.f);
 	GetRigidBody()->SetVelocityLimit(200.f);
+	
+	// Gravity Setting
+	GetRigidBody()->SetGravity(true);
+	GetRigidBody()->SetGravityAccel(800.f);
+	GetRigidBody()->SetGravityVelocityLimit(700.f);
+}
+
+CPlayer::CPlayer(const CPlayer& _other)
+	: CObject(_other)
+	, m_fSpeed(_other.m_fSpeed)
+{
 }
 
 CPlayer::~CPlayer()
@@ -72,17 +83,17 @@ void CPlayer::ObjectTick()
 		GetRigidBody()->AddForce(Vec(300.f, 0.f));
 	}
 
-	if (IsPressed(KEY::UP))
-	{
-		//vPos.y -= m_fSpeed * DT;
-		GetRigidBody()->AddForce(Vec(0.f, -300.f));
-	}
+	//if (IsPressed(KEY::UP))
+	//{
+	//	//vPos.y -= m_fSpeed * DT;
+	//	GetRigidBody()->AddForce(Vec(0.f, -300.f));
+	//}
 
-	if (IsPressed(KEY::DOWN))
-	{
-		//vPos.y += m_fSpeed * DT;
-		GetRigidBody()->AddForce(Vec(0.f, 300.f));
-	}
+	//if (IsPressed(KEY::DOWN))
+	//{
+	//	//vPos.y += m_fSpeed * DT;
+	//	GetRigidBody()->AddForce(Vec(0.f, 300.f));
+	//}
 
 
 
@@ -94,14 +105,14 @@ void CPlayer::ObjectTick()
 	{
 		GetAnimator()->Play(L"WALK_RIGHT", true);
 	}
-	if (IsTap(KEY::UP))
+	/*if (IsTap(KEY::UP))
 	{
 		GetAnimator()->Play(L"WALK_UP", true);
 	}
 	if (IsTap(KEY::DOWN))
 	{
 		GetAnimator()->Play(L"WALK_DOWN", true);
-	}
+	}*/
 
 	if (IsTap(KEY::SPACE))
 	{
@@ -109,23 +120,33 @@ void CPlayer::ObjectTick()
 		//CLevel* pCurLevel = CLevelMgr::GetInst()->GetCurLevel(); // CEventMgr에서 관리 
 
 		// 미사일 생성
-		for (int i = 0; i < 3; ++i)
+		//for (int i = 0; i < 3; ++i)
+		//{
+		//	CMissile* pMissile = new CMissile;
+		//	pMissile->SetPos(GetPos());
+		//	pMissile->SetScale(Vec(20.f, 20.f));
+		//	pMissile->SetSpeed(400.f);
+		//	pMissile->SetDir(75.f + 15.f * (float)i); // 75도 90도 105도 세갈래로 미사일 발사
+		//	//pCurLevel->AddObject(pMissile, LAYER::PLAYER_PROJECTILE);
+
+		//	/*tEvent even ={};
+		//	even.eType = EVENT_TYPE::CREATE_OBJECT;
+		//	even.wPARAM = (DWORD_PTR)pMissile;
+		//	even.lPARAM = (DWORD_PTR)LAYER::PLAYER_PROJECTILE;
+
+		//	CEventMgr::GetInst()->AddEvent(even);*/
+
+		//	Instantiate(pMissile, GetPos(), LAYER::PLAYER_PROJECTILE);
+		//}
+
+		Vec V = GetRigidBody()->GetVelocity();
+		if (0.f < V.y) // 속도가 아래를 향하고 있는 경우
 		{
-			CMissile* pMissile = new CMissile;
-			pMissile->SetPos(GetPos());
-			pMissile->SetScale(Vec(20.f, 20.f));
-			pMissile->SetSpeed(400.f);
-			pMissile->SetDir(75.f + 15.f * (float)i); // 75도 90도 105도 세갈래로 미사일 발사
-			//pCurLevel->AddObject(pMissile, LAYER::PLAYER_PROJECTILE);
-
-			/*tEvent even ={};
-			even.eType = EVENT_TYPE::CREATE_OBJECT;
-			even.wPARAM = (DWORD_PTR)pMissile;
-			even.lPARAM = (DWORD_PTR)LAYER::PLAYER_PROJECTILE;
-
-			CEventMgr::GetInst()->AddEvent(even);*/
-
-			Instantiate(pMissile, GetPos(), LAYER::PLAYER_PROJECTILE);
+			GetRigidBody()->AddVelocity(Vec(0.f, -(V.y + 400.f))); 
+		}
+		else // 속도가 위를 향하는 경우
+		{
+			GetRigidBody()->AddVelocity(Vec(0.f, -400.f));
 		}
 	}
 	//SetPos(vPos);

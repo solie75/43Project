@@ -46,8 +46,11 @@ public:
 	void SetDead();
 	//void Instantiate(CObject* _pNewObj, Vec _vPos, LAYER _eLayer);
 
+	virtual CObject* Clone() = 0;
+
 public:
 	CObject();
+	CObject(const CObject& _other); 
 	virtual ~CObject();
 
 	friend class CEventMgr;
