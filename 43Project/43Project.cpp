@@ -106,6 +106,8 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
    return TRUE;
 }
 
+INT_PTR CALLBACK TileCount(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam); // 전방선언
+
 // 메인 윈도우의 메세지 처리기 함수
 LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
@@ -123,6 +125,10 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
             case IDM_EXIT:
                 DestroyWindow(hWnd);
                 break;
+            case CHANGE_TILECOUNT:
+            {
+                DialogBox(hInst, MAKEINTRESOURCE(IDD_TILECOUNT), hWnd, TileCount);
+            }
             default:
                 return DefWindowProc(hWnd, message, wParam, lParam);
             }

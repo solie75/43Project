@@ -107,9 +107,9 @@ void CLevel::CreateTile(UINT _X, UINT _Y)
 	m_iTileYCount = _Y;
 
 	// 지정된 가로 세로 숫자에 맞추어 타일 배치
-	for (UINT iRow = 0; iRow < m_iTileXCount; ++iRow)
+	for (UINT iRow = 0; iRow < m_iTileYCount; ++iRow)
 	{
-		for (UINT iCol = 0; iCol < m_iTileYCount; ++iCol)
+		for (UINT iCol = 0; iCol < m_iTileXCount; ++iCol)
 		{
 			CTile* pTile = new CTile;
 			pTile->SetPos(Vec((float)(TILE_SIZE * iCol), (float)(TILE_SIZE * iRow)));

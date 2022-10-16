@@ -27,7 +27,7 @@ void CEditorLevel::LevelInit()
 	CTexture* pTex = CResourceMgr::GetInst()->LoadTexture(L"TileAtlas", L"texture\\TILE.bmp");
 
 	// 타일 생성
-	CreateTile(8, 8);
+	CreateTile(8, 6);
 
 	// 각 타일에다가 사용할 아틀라스 이미지와, 이미지 인덱스를 세팅
 	const vector<CObject*>& vecTile = GetLayer(LAYER::TILE);
@@ -49,4 +49,26 @@ void CEditorLevel::LevelEnter()
 
 void CEditorLevel::LevelExit()
 {
+}
+
+// ======================
+// Tile Count Dialog Proc
+// ======================
+INT_PTR CALLBACK TileCount(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam)
+{
+	UNREFERENCED_PARAMETER(lParam);
+	switch (message)
+	{
+	case WM_INITDIALOG:
+		return (INT_PTR)TRUE;
+
+	case WM_COMMAND:
+		if (LOWORD(wParam) == IDOK || LOWORD(wParam) == IDCANCEL)
+		{
+			EndDialog(hDlg, LOWORD(wParam));
+			return (INT_PTR)TRUE;
+		}
+		break;
+	}
+	return (INT_PTR)FALSE;
 }
