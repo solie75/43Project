@@ -3,6 +3,7 @@
 
 #include "CTexture.h"
 #include "CCameraMgr.h"
+#include "CResourceMgr.h"
 
 CTile::CTile()
 	: m_pAtlas(nullptr)
@@ -80,12 +81,50 @@ void CTile::ObjectRender(HDC _dc)
 		, SRCCOPY);
 }
 
-void CTile::TileSave(FILE* _pFIle)
+void CTile::TileSave(FILE* _pFile)
 {
+	// 위치
+	Vec vPos = GetPos();
+	fwrite(&vPos, sizeof(Vec), 1, _pFile);
+
+	// 아틀라스 이미지 정보
+	bool bAtlas = m_pAtlas;
+	fwrite(&bAtlas, sizeof(bool), 1, _pFile);
+
+	if (bAtlas)
+	{
+		// 키값 저장,
+		wstring strKey = m_pAtlas->GetKey();
+		SaveWString(strKey, _pFile);
+
+		// 상대경로 저장
+		wstring strRelativePath = m_pAtlas->GetRelativePath();
+		SaveWString(strRelativePath, _pFile);
+	}
+
+	// 이미지 인덱스
+	fwrite(&m_iImgIdx, sizeof(int), 1, _pFile);
 }
 
 void CTile::TileLoad(FILE* _pFile)
 {
+	// 위치
+	Vec vPos;
+	fread(&vPos, sizeof(Vec), 1, _pFile);
+	SetPos(vPos);
+
+	// 아틀라스 이미지 정보
+	bool bAtlas = false;
+	fread(&bAtlas, sizeof(bool), 1, _pFile);
+
+	if (bAtlas)
+	{
+		wstring strKey, strRelativePath;
+		LoadWString(strKey, _pFile);
+		LoadWString(strRelativePath, _pFile);
+		m_pAtlas = CResourceMgr::GetInst()->LoadTexture(strKey, strRelativePath);
+
+		// 이미지 인덱스
+		fread(&m_iImgIdx, sizeof(int), 1, _pFile);
+	}
 }
-
-

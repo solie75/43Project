@@ -12,10 +12,11 @@ private:
 
     UINT m_iTileXCount;
     UINT m_iTileYCount;
+    // CreateTile() 에서 요구되는 타일 행, 열 개수
 
 public:
     UINT GetTileXCount() { return m_iTileXCount; }
-    UINT GetdRileYCount() { return m_iTileYCount; }
+    UINT GetTileYCount() { return m_iTileYCount; }
 
 public:
     virtual void LevelInit() = 0;

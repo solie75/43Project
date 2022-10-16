@@ -17,7 +17,7 @@ public:
     virtual void ObjectTick() override;
     virtual void ObjectRender(HDC _dc) override;
 
-    void TileSave(FILE* _pFIle);
+    void TileSave(FILE* _pFile);
     void TileLoad(FILE* _pFile);
 
 public:

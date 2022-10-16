@@ -4,6 +4,8 @@
 #include "CTile.h"
 
 CLevel::CLevel()
+	: m_iTileXCount(0)
+	, m_iTileYCount(0)
 {
 }
 
