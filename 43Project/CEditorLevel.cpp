@@ -10,6 +10,9 @@
 #include "CResourceMgr.h"
 #include "CKeyMgr.h"
 #include "CPathMgr.h"
+#include "CLevelMgr.h"
+
+#include "Resource.h"
 
 CEditorLevel::CEditorLevel()
 	:m_eMode(EDITOR_MODE::TILE)
@@ -175,7 +178,37 @@ INT_PTR CALLBACK TileCount(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam
 		return (INT_PTR)TRUE;
 
 	case WM_COMMAND:
-		if (LOWORD(wParam) == IDOK || LOWORD(wParam) == IDCANCEL)
+		if (LOWORD(wParam) == IDOK)
+		{
+			// Edit Control 에 입력된 숫자를 받아 온다.
+			int iTileXCount = GetDlgItemInt(hDlg, IDC_EDIT1, nullptr, true);
+			int iTileYCount = GetDlgItemInt(hDlg, IDC_EDIT2, nullptr, true);
+
+			if (!(iTileXCount && iTileYCount))
+			{
+				MessageBox(nullptr, L"타일 개수를 지정하세요", L"타일 생성 오류", MB_OK);
+				return (INT_PTR)TRUE;
+			}
+
+			// 지정된 수치로 타일을 새로 생성
+			CLevel* pCurLevel = CLevelMgr::GetInst()->GetCurLevel();
+			pCurLevel->CreateTile(iTileXCount, iTileYCount);
+
+			// 각 타일에다가 사용할 아틀라스 이미지와 이미지 인덱스 세팅
+			CTexture* pTex = CResourceMgr::GetInst()->LoadTexture(L"TileAtlas", L"texture\\TILE.bmp");
+
+			const vector<CObject*>& vecTile = pCurLevel->GetLayer(LAYER::TILE);
+			for (size_t i = 0; i < vecTile.size(); ++i)
+			{
+				((CTile*)vecTile[i])->SetAtlas(pTex);
+				((CTile*)vecTile[i])->SetImgIdx(0);
+			}
+
+			EndDialog(hDlg, LOWORD(wParam));
+			return (INT_PTR)TRUE;
+
+		}
+		else if(LOWORD(wParam) == IDCANCEL)
 		{
 			EndDialog(hDlg, LOWORD(wParam));
 			return (INT_PTR)TRUE;
