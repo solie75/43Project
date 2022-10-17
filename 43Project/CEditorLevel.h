@@ -16,6 +16,7 @@ class CEditorLevel :
 {
 private:
     EDITOR_MODE m_eMode;
+    HMENU m_hMenu;
 
 public:
     virtual void LevelInit() override;

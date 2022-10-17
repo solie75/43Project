@@ -43,5 +43,28 @@ void CTexture::Create(UINT _iWidth, UINT _iHeight)
     GetObject(m_hBit, sizeof(BITMAP), &m_tBitmapInfo);
 }
 
+void CTexture::ReSize(UINT _iWidth, UINT _iHeight)
+{
+    // 새로운 비트맵과 새로운 DC를 생성
+    HBITMAP hNewBit = CreateCompatibleBitmap(CEngine::GetInst()->GetMainDC(), _iWidth, _iHeight);
+    HDC hNewDC = CreateCompatibleDC(CEngine::GetInst()->GetMainDC());
+    HBITMAP hPrevBit = (HBITMAP)SelectObject(hNewDC, hNewBit);
+    DeleteObject(hPrevBit);
+
+    //  기존에 있던 그림을 새로운 곳으로 이사
+    BitBlt(hNewDC, 0, 0, m_tBitmapInfo.bmWidth, m_tBitmapInfo.bmHeight, m_hDC, 0, 0, SRCCOPY);
+
+    // 기존 비트맵, DC 를 삭제'
+    DeleteObject(m_hBit);
+    DeleteDC(hNewDC);
+
+    // 새로운 비트맵으로 아이디 대체
+    m_hBit = hNewBit;
+    m_hDC = hNewDC;
+
+    // 비트맵 정보 갱신
+    GetObject(m_hBit, sizeof(BITMAP), &m_tBitmapInfo);
+}
+
 
 

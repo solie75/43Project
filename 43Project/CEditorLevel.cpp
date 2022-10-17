@@ -40,18 +40,45 @@ void CEditorLevel::LevelInit()
 	for (size_t i = 0; i < vecTile.size(); ++i)
 	{
 		((CTile*)vecTile[i])->SetAtlas(pTex);
-		((CTile*)vecTile[i])->SetImgIdx(0);
+		((CTile*)vecTile[i])->SetImgIdx((int)i);
 	}
 }
 
 void CEditorLevel::LevelTick()
 {
+	CLevel::LevelTick();
+
+	if (IsTap(KEY::ENTER))
+	{
+		ChangeLevel(LEVEL_TYPE::START);
+	}
+
+	if (IsTap(KEY::_1))
+		m_eMode = EDITOR_MODE::TILE;
+	if (IsTap(KEY::_2))
+		m_eMode = EDITOR_MODE::ANIMATION;
+	if (IsTap(KEY::_3))
+		m_eMode = EDITOR_MODE::OBJECT;
+	if (IsTap(KEY::_0))
+		m_eMode = EDITOR_MODE::NONE;
+
 	Update();
 }
 
 void CEditorLevel::LevelEnter()
 {
-	CLevel::LevelTick();
+	// 메뉴바 생성
+	if (nullptr == m_hMenu)
+	{
+		m_hMenu = LoadMenu(nullptr, MAKEINTRESOURCEW(IDC_MY43PROJECT));
+	}
+
+	// 메뉴바 추가로 인한 해상도 재 설정
+	HWND hWnd = CEngine::GetInst()->GetMainWnd();
+	SetMenu(hWnd, m_hMenu);
+
+	POINT ptResolution = CEngine::GetInst()->GetResolution();
+	CEngine::GetInst()->ChangeWindowSize(ptResolution.x, ptResolution.y);
 }
 
 void CEditorLevel::LevelExit()

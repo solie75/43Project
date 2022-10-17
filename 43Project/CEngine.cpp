@@ -1,6 +1,5 @@
 #include "pch.h"
 #include "CEngine.h"
-#include "CTexture.h"
 
 #include "CTimeMgr.h"
 #include "CKeyMgr.h"
@@ -10,6 +9,8 @@
 #include "CPathMgr.h"
 #include "CCameraMgr.h"
 #include "CResourceMgr.h"
+
+#include "CTexture.h"
 
 
 CEngine::CEngine()
@@ -35,6 +36,8 @@ CEngine::~CEngine()
 		DeleteObject(m_arrPen[i]);
 	}
 }
+
+
 
 void CEngine::CEngineInit(HWND _hWnd, UINT _iWidth, UINT _iHeight)
 {
@@ -139,4 +142,38 @@ void CEngine::CreatePenBrush()
 	//HBRUSH hBlueBrush = CreateSolidBrush(RGB(0, 0, 255));
 	//HBRUSH hWhiteBrush = (HBRUSH)SelectObject(m_hDC, hBlueBrush);
 	//DeleteObject(hWhiteBrush);
+}
+
+void CEngine::ChangeWindowSize(UINT _iWidth, UINT _iHeight)
+{
+	m_ptResolution.x = _iWidth;
+	m_ptResolution.y = _iHeight;
+
+	RECT rt = { 0, 0, m_ptResolution.x, m_ptResolution.y };
+
+	HMENU hMenu = GetMenu(m_hMainWnd);
+
+	if (nullptr != hMenu)
+	{
+		AdjustWindowRect(&rt, WS_OVERLAPPEDWINDOW, true);
+	}
+	else
+	{
+		AdjustWindowRect(&rt, WS_OVERLAPPEDWINDOW, false);
+	}
+
+	SetWindowPos(m_hMainWnd, nullptr, 0, 0, rt.right - rt.left, rt.bottom - rt.top, 0);
+
+	// 백버퍼가 없으면 생성
+	if (nullptr == m_pMemTex)
+	{
+		// 백버퍼용 비트맵 제장
+		m_pMemTex = CResourceMgr::GetInst()->CreateTexture(L"BackBuffer", m_ptResolution.x, m_ptResolution.y);
+	}
+
+	// 백버퍼가 있으면, 변경된 해상도에 맞추어 크기 재조정
+	else
+	{
+		m_pMemTex->ReSize(m_ptResolution.x, m_ptResolution.y);
+	}
 }

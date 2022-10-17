@@ -64,7 +64,7 @@ void CStartLevel::LevelTick()
 		//CCameraMgr::GetInst()->FadeOut(1.f);
 		//CCameraMgr::GetInst()->FadeIn(1.f);
 
-		ChangeLevel(LEVEL_TYPE::STAGE_01);
+		ChangeLevel(LEVEL_TYPE::EDITOR);
 	}
 
 	if (IsTap(KEY::LBTN))

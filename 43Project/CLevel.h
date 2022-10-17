@@ -39,7 +39,7 @@ public:
 
     void DeleteAllObject();
 
-    void DeleteObject(LAYER _eLayer);
+    void DeleteObject(LAYER _eLayer); // 기존의 브러쉬 등의 오브젝트 지우는 윈도우 함수하고 이름이 겹친다. 다음에는 이름을 바꾸자
     void CreateTile(UINT _X, UINT _Y);
 
 public:

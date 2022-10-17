@@ -25,6 +25,8 @@ public:
 	HDC GetMainDC() { return m_hDC ; }
 	POINT GetResolution() { return m_ptResolution; }
 
+	void ChangeWindowSize(UINT _iWidth, UINT _iHeight);
+
 public:
 	void CEngineInit(HWND _hWnd, UINT _iWidth, UINT _iHeight);
 	void progress();
